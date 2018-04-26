@@ -1,3 +1,4 @@
+beans\configuration\SpringWebConfig.class
 beans\models\Event.class
 beans\models\Booking.class
 beans\daos\db\UserDAOImpl.class
@@ -35,10 +36,13 @@ beans\daos\BookingDAO.class
 beans\controller\HelloController.class
 beans\models\User.class
 beans\configuration\AuditoriumConfiguration.class
+beans\configuration\WebConfiguration.class
 beans\aspects\LuckyWinnerAspect.class
 beans\aspects\DiscountAspect.class
 beans\configuration\AppConfiguration.class
+beans\models\Car.class
 beans\services\BookingService.class
+beans\controller\SpringController.class
 beans\configuration\StrategiesConfiguration.class
 beans\services\AuditoriumService.class
 util\CsvUtil.class

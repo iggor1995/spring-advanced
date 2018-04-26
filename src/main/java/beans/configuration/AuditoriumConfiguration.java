@@ -9,12 +9,6 @@ import org.springframework.context.annotation.PropertySource;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 2/12/2016
- * Time: 1:36 PM
- */
 @Configuration
 @PropertySource({"classpath:auditoriums/blueHall.properties", "classpath:auditoriums/redHall.properties",
                  "classpath:auditoriums/yellowHall.properties"})
@@ -28,7 +22,6 @@ public class AuditoriumConfiguration {
 
     @Value("#{'${blue.hall.vipSeats}'.split(',')}")
     private List<Integer> blueHallVipSeats;
-
 
     @Value("${red.hall.name}")
     private String redHallName;
