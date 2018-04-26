@@ -17,16 +17,15 @@
     <context:component-scan base-package="beans"/>
 
     <aop:aspectj-autoproxy/>
-
-    <bean
-            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix">
-            <value>/WEB-INF/views/jsp/</value>
-        </property>
-        <property name="suffix">
-            <value>.jsp</value>
-        </property>
-    </bean>
+     <!--<bean-->
+            <!--class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+        <!--<property name="prefix">-->
+            <!--<value>/WEB-INF/views/ftl/</value>-->
+        <!--</property>-->
+        <!--<property name="suffix">-->
+            <!--<value>.ftl</value>-->
+        <!--</property>-->
+    <!--</bean> -->
 
     <mvc:resources mapping="/resources/**" location="/resources/" />
 
