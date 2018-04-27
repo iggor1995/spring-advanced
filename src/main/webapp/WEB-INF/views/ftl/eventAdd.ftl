@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head><title> FreeMarker Spring MVC Hello World</title>
-
+<#import "/spring.ftl" as spring/>
     <style>
         body, input {
             font-family: Calibri, Arial;
@@ -37,20 +37,25 @@
         <legend>Add Movie</legend>
         <form name="event" action="addEvent" method="post">
             Name : <input type="text" name="name" /> <br/>
-            <!--Rate :
-            <select name="rate" id="hall">
-                <option selected = selected>"HIGH"</option>
-                <option>"MID"</option>
-                <option>"LOW"</option>
-            </select> <br/>-->
-            Base price :  <input type="number" name="basePrice" /> <br/>
-            <#--Date and time : <input type="datetime-local" name="dateTime" value="2000-01-01"/> <br/>-->
 
-            <select name="auditorium">
-                <#list model["auditoriums"] as auditorium>
-                    <option>${auditorium.name}</option>
-                </#list>
-            </select>
+            Base price :  <input type="number" name="basePrice" /> <br/>
+            Date and time : <input type="datetime-local" name="dateTime"/> <br/>
+            <label>
+                <select name="rate">
+                    <option selected="selected">HIGH</option>
+                    <option selected="selected">MID</option>
+                    <option selected="selected">LOW</option>
+                </select>
+            </label>
+            <#--Rate : <input type="text" name = "rate"> <br/>-->
+            <#--<input type="text" name="auditorium"><br/>-->
+            <label>
+                <select name="auditorium">
+                    <#list model["auditoriums"] as auditorium>
+                        <option>${auditorium.name}</option>
+                    </#list>
+                </select>
+            </label>
             <input type="submit" value="   Add movie   " />
         </form>
     </fieldset>

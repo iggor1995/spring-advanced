@@ -48,5 +48,6 @@ beans\aspects\LuckyWinnerAspect.class
 beans\aspects\DiscountAspect.class
 beans\configuration\AppConfiguration.class
 beans\models\Car.class
+beans\formatter\RateFormatter.class
 beans\configuration\StrategiesConfiguration.class
 util\CsvUtil.class

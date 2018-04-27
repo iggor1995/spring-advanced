@@ -7,6 +7,7 @@ import beans.services.api.EventService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,7 +39,8 @@ public class EventController {
     }
 
     @RequestMapping(value = "/addEvent", method = RequestMethod.POST)
-    public String createEvent(@ModelAttribute("event") @Valid Event event){
+    public String createEvent(@ModelAttribute("event") @Valid Event event, BindingResult result){
+        System.out.println(result);
         if(event != null){
             eventService.create(event);
         }

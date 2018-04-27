@@ -1,5 +1,7 @@
 package beans.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDateTime;
 
 /**
@@ -14,6 +16,7 @@ public class Event {
     private String        name;
     private Rate          rate;
     private double        basePrice;
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:")
     private LocalDateTime dateTime;
     private Auditorium    auditorium;
 
