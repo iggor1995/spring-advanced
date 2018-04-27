@@ -2,7 +2,7 @@ import beans.aspects.CounterAspect;
 import beans.aspects.DiscountAspect;
 import beans.aspects.LuckyWinnerAspect;
 import beans.models.*;
-import beans.services.*;
+import beans.services.api.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

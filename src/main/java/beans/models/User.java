@@ -1,18 +1,16 @@
 package beans.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 2/1/2016
- * Time: 7:35 PM
- */
 public class User {
 
     private long      id;
     private String    email;
     private String    name;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
 
     public User() {

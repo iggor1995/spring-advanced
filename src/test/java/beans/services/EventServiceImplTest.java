@@ -8,6 +8,7 @@ import beans.daos.mocks.EventDAOMock;
 import beans.models.Auditorium;
 import beans.models.Event;
 import beans.models.Rate;
+import beans.services.api.EventService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

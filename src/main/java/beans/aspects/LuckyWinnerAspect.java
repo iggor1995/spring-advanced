@@ -36,7 +36,7 @@ public class LuckyWinnerAspect {
         this.luckyPercentage = luckyPercentage;
     }
 
-    @Pointcut("(execution(* beans.services.BookingService.bookTicket(beans.models.User, beans.models.Ticket)) && args(user, ticket))")
+    @Pointcut("(execution(* beans.services.api.BookingService.bookTicket(beans.models.User, beans.models.Ticket)) && args(user, ticket))")
     private void bookTicket(User user, Ticket ticket) {
     }
 

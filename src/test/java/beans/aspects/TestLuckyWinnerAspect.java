@@ -10,7 +10,7 @@ import beans.daos.mocks.EventDAOMock;
 import beans.daos.mocks.UserDAOMock;
 import beans.models.Ticket;
 import beans.models.User;
-import beans.services.BookingService;
+import beans.services.api.BookingService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="8" failures="0" name="beans.services.BookingServiceImplTest" time="0.878" errors="0" skipped="0">
+<testsuite tests="8" failures="0" name="beans.services.BookingServiceImplTest" time="0.866" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="2016.2.5"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -11,7 +11,7 @@
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="idea.launcher.port" value="7537"/>
+    <property name="idea.launcher.port" value="7590"/>
     <property name="user.script" value=""/>
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
@@ -63,12 +63,12 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="beans.services.BookingServiceImplTest" name="testBookTicket_NotRegistered" time="0.039"/>
-  <testcase classname="beans.services.BookingServiceImplTest" name="testBookTicket_AlreadyBooked" time="0.021"/>
-  <testcase classname="beans.services.BookingServiceImplTest" name="testGetTicketPrice" time="0.028"/>
-  <testcase classname="beans.services.BookingServiceImplTest" name="testGetTicketsForEvent" time="0.025"/>
-  <testcase classname="beans.services.BookingServiceImplTest" name="testGetTicketPrice_WithoutDiscount" time="0.028"/>
-  <testcase classname="beans.services.BookingServiceImplTest" name="testGetTicketPrice_DiscountsForTicketsAndForBirthday" time="0.031"/>
-  <testcase classname="beans.services.BookingServiceImplTest" name="testGetTicketPrice_DiscountsForTicketsAndForBirthday_MidRate" time="0.03"/>
-  <testcase classname="beans.services.BookingServiceImplTest" name="testBookTicket" time="0.028"/>
+  <testcase classname="beans.services.BookingServiceImplTest" name="testGetTicketsForEvent" time="0.034"/>
+  <testcase classname="beans.services.BookingServiceImplTest" name="testBookTicket_NotRegistered" time="0.023"/>
+  <testcase classname="beans.services.BookingServiceImplTest" name="testBookTicket_AlreadyBooked" time="0.022"/>
+  <testcase classname="beans.services.BookingServiceImplTest" name="testGetTicketPrice" time="0.017"/>
+  <testcase classname="beans.services.BookingServiceImplTest" name="testGetTicketPrice_DiscountsForTicketsAndForBirthday" time="0.015"/>
+  <testcase classname="beans.services.BookingServiceImplTest" name="testGetTicketPrice_DiscountsForTicketsAndForBirthday_MidRate" time="0.032"/>
+  <testcase classname="beans.services.BookingServiceImplTest" name="testBookTicket" time="0.037"/>
+  <testcase classname="beans.services.BookingServiceImplTest" name="testGetTicketPrice_WithoutDiscount" time="0.032"/>
 </testsuite>

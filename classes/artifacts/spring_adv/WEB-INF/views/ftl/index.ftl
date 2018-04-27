@@ -42,6 +42,15 @@
             <input type="submit" value="   Save   " />
         </form>
     </fieldset>
+    <fieldset>
+        <legend>Add User</legend>
+        <form name="user" action="register" method="post">
+            Name : <input type="text" name="name" /> <br/>
+            Email :  <input type="text" name="email" /> <br/>
+            Birthday : <input type="date" name="birthday" value = "01/01/2000"/> <br/>
+            <input type="submit" value="   Register   " />
+        </form>
+    </fieldset>
 
     <br/>
     <table class="datatable">
@@ -50,9 +59,25 @@
         </tr>
     <#list model["carList"] as car>
         <tr>
-            <td>${car.make}</td> <td>${car.model}</td>
+            <td>${car.make}</td>
+            <td>${car.model}</td>
         </tr>
     </#list>
+    </table>
+
+    <table class="datatable">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Birthday</th>
+        </tr>
+        <#list model["userList"] as user>
+            <tr>
+                <td>${user.name}</td>
+                <td>${user.email}</td>
+                <td>${user.birthday}</td>
+            </tr>
+        </#list>
     </table>
 
 </div>

@@ -6,10 +6,11 @@ import beans.daos.EventDAO;
 import beans.daos.UserDAO;
 import beans.daos.mocks.*;
 import beans.models.*;
-import beans.services.*;
+import beans.services.api.*;
 import beans.services.discount.BirthdayStrategy;
 import beans.services.discount.DiscountStrategy;
 import beans.services.discount.TicketsStrategy;
+import beans.services.impl.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
