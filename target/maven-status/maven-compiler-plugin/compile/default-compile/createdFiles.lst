@@ -1,7 +1,9 @@
 beans\services\api\UserService.class
 beans\configuration\SpringWebConfig.class
+beans\controller\MainController.class
 beans\models\Event.class
 beans\models\Booking.class
+util\DataFiller.class
 beans\daos\db\UserDAOImpl.class
 beans\daos\UserDAO.class
 beans\configuration\db\DataSourceConfiguration.class
@@ -35,9 +37,11 @@ beans\configuration\db\DbSessionFactory$1.class
 beans\services\discount\TicketsStrategy.class
 beans\daos\BookingDAO.class
 beans\controller\HelloController.class
+beans\formatter\AuditoriumFormatter.class
 beans\controller\UserController.class
 beans\models\User.class
 beans\configuration\AuditoriumConfiguration.class
+beans\controller\EventController.class
 beans\configuration\WebConfiguration.class
 beans\services\api\EventService.class
 beans\aspects\LuckyWinnerAspect.class
