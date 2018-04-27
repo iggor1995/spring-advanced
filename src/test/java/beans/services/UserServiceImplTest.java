@@ -26,12 +26,6 @@ import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 06/2/16
- * Time: 8:02 PM
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {AppConfiguration.class, DataSourceConfiguration.class, DbSessionFactory.class, TestUserServiceConfiguration.class})
 @Transactional
@@ -60,7 +54,8 @@ public class UserServiceImplTest {
     @Test
     public void testRegister() throws Exception {
         String email = UUID.randomUUID().toString();
-        User user = new User(email, UUID.randomUUID().toString(), LocalDate.now());
+        String password = UUID.randomUUID().toString();
+        User user = new User(email, UUID.randomUUID().toString(), LocalDate.now(), password);
         long registeredId = userService.register(user).getId();
         assertEquals("User should be the same", userService.getUserByEmail(email), user.withId(registeredId));
     }
@@ -82,7 +77,7 @@ public class UserServiceImplTest {
     public void testUsersGetByName() throws Exception {
         User testUser1 = (User) applicationContext.getBean("testUser1");
         List<User> before = userService.getUsersByName(testUser1.getName());
-        User addedUser = new User(UUID.randomUUID().toString(), testUser1.getName(), LocalDate.now());
+        User addedUser = new User(UUID.randomUUID().toString(), testUser1.getName(), LocalDate.now(), UUID.randomUUID().toString());
         long registeredId = userService.register(addedUser).getId();
         List<User> after = userService.getUsersByName(testUser1.getName());
         before.add(addedUser.withId(registeredId));

@@ -7,8 +7,6 @@ import java.util.Locale;
 import beans.models.Car;
 import beans.models.User;
 import beans.services.api.UserService;
-import beans.services.impl.UserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
@@ -25,8 +23,8 @@ import javax.annotation.Resource;
 @ComponentScan("beans")
 public class UserController {
 
-    private static List<Car> carList = new ArrayList<Car>();
-    private static List<User> userList = new ArrayList<User>();
+    private static List<Car> carList = new ArrayList<>();
+    private static List<User> userList = new ArrayList<>();
 
     @Resource
     @Qualifier("userServiceImpl")
@@ -47,7 +45,7 @@ public class UserController {
     public String init(@ModelAttribute("model") ModelMap model) {
         model.addAttribute("carList", carList);
         model.addAttribute("userList", userList);
-        return "index";
+        return "register";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -61,8 +59,7 @@ public class UserController {
     public String register(@ModelAttribute("user") User user){
         if(null != user){
             userList.add(user);
-            if(userService != null) System.out.println(userService);
-//          userService.register(user);
+            userService.register(user);
         }
         return "redirect:/cars";
     }

@@ -6,29 +6,30 @@ import java.time.LocalDate;
 
 public class User {
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate birthday;
     private long      id;
     private String    email;
     private String    name;
-
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate birthday;
+    private String password;
 
     public User() {
     }
 
-    public User(long id, String email, String name, LocalDate birthday) {
+    public User(long id, String email, String name, LocalDate birthday, String password) {
         this.id = id;
         this.email = email;
         this.name = name;
         this.birthday = birthday;
+        this.password = password;
     }
 
-    public User(String email, String name, LocalDate birthday) {
-        this(-1, email, name, birthday);
+    public User(String email, String name, LocalDate birthday, String password) {
+        this(-1, email, name, birthday, password);
     }
 
     public User withId(long id) {
-        return new User(id, email, name, birthday);
+        return new User(id, email, name, birthday, password);
     }
 
     public long getId() {
@@ -63,41 +64,46 @@ public class User {
         this.birthday = birthday;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
         User user = (User) o;
 
-        if (id != user.id)
-            return false;
-        if (email != null ? !email.equals(user.email) : user.email != null)
-            return false;
-        if (name != null ? !name.equals(user.name) : user.name != null)
-            return false;
-        return birthday != null ? birthday.equals(user.birthday) : user.birthday == null;
+        if (id != user.id) return false;
+        if (birthday != null ? !birthday.equals(user.birthday) : user.birthday != null) return false;
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        if (name != null ? !name.equals(user.name) : user.name != null) return false;
+        return password != null ? password.equals(user.password) : user.password == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result = birthday != null ? birthday.hashCode() : 0;
+        result = 31 * result + (int) (id ^ (id >>> 32));
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         return "User{" +
-               "id=" + id +
-               ", email='" + email + '\'' +
-               ", name='" + name + '\'' +
-               ", birthday=" + birthday +
-               '}';
+                "birthday=" + birthday +
+                ", id=" + id +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

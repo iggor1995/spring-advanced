@@ -11,12 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 2/1/2016
- * Time: 7:30 PM
- */
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {

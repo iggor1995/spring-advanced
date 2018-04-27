@@ -47,7 +47,8 @@
         <form name="user" action="register" method="post">
             Name : <input type="text" name="name" /> <br/>
             Email :  <input type="text" name="email" /> <br/>
-            Birthday : <input type="date" name="birthday" value = "01/01/2000"/> <br/>
+            Password :  <input type="password" name="password" /> <br/>
+            Birthday : <input type="date" name="birthday" value="2000-01-01"/> <br/>
             <input type="submit" value="   Register   " />
         </form>
     </fieldset>
