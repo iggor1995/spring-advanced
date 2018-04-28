@@ -69,19 +69,21 @@
     <br/>
     <table class="datatable">
         <tr>
+            <th>Auditorium</th>
             <th>Name</th>
             <th>Rate</th>
             <th>Price</th>
             <th>Date</th>
-            <th>Auditorium</th>
+
         </tr>
     <#list model["events"] as event>
         <tr>
+            <td>${event.auditorium.name}</td>
             <td>${event.name}</td>
             <td>${event.rate}</td>
             <td>${event.basePrice}</td>
             <td>${event.dateTime}</td>
-            <td>${event.auditorium}</td>
+
         </tr>
     </#list>
     </table>

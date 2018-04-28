@@ -1,4 +1,3 @@
-C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\formatter\RateFormatter.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\db\DataSourceConfiguration.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\impl\BookingServiceImpl.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\AuditoriumDAO.java
@@ -44,9 +43,10 @@ C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\inmemory\In
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\BookingDAO.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\db\DbSessionFactory.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\AbstractDAO.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\converter\StringToAuditoriumConverter.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\inmemory\InMemoryUserDAO.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\inmemory\InMemoryAuditoriumDAO.java
-C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\formatter\AuditoriumFormatter.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\converter\StringToLocalDateTimeConverter.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\api\UserService.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\api\EventService.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\AppConfiguration.java

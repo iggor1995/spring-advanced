@@ -18,12 +18,13 @@
 
     <aop:aspectj-autoproxy/>
 
-    <mvc:annotation-driven />
+    <mvc:annotation-driven conversion-service="conversionService"/>
 
-    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-        <property name="formatters">
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
             <set>
-                <ref bean="auditoriumFormatter"/>
+                <bean class="beans.models.converter.StringToAuditoriumConverter" />
+                <bean class="beans.models.converter.StringToLocalDateTimeConverter" />
             </set>
         </property>
     </bean>

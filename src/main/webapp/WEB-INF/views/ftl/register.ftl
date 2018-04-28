@@ -1,5 +1,5 @@
 <html>
-<head><title> FreeMarker Spring MVC Hello World</title>
+<head><title> Registeration</title>
 
     <style>
         body, input {
@@ -20,7 +20,7 @@
         .datatable tr {border:1px solid #888}
         .datatable tr.odd {background-color:#eee}
         .datatable td {padding:2px;border:1px solid #888}
-        #content { padding 5px; margin: 5px; text-align: center}
+        #content { padding 5px; margin: 5px; text-align: center; solid-color: green }
         fieldset { width: 300px; padding: 5px; margin-bottom: 0px; }
         legend { font-weight: bold; }
     </style>

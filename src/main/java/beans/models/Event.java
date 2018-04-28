@@ -4,19 +4,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 2/1/2016
- * Time: 7:42 PM
- */
 public class Event {
 
     private long          id;
     private String        name;
     private Rate          rate;
     private double        basePrice;
-    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime dateTime;
     private Auditorium    auditorium;
 

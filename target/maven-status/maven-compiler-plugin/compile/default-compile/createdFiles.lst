@@ -12,6 +12,7 @@ beans\daos\inmemory\InMemoryBookingDAO.class
 beans\daos\inmemory\InMemoryAuditoriumDAO.class
 beans\daos\inmemory\InMemoryEventDAO.class
 beans\services\discount\DiscountStrategy.class
+beans\models\converter\StringToAuditoriumConverter.class
 beans\services\discount\BirthdayStrategy.class
 beans\aspects\CounterAspect.class
 beans\daos\db\BookingDAOImpl.class
@@ -37,9 +38,9 @@ beans\configuration\db\DbSessionFactory$1.class
 beans\services\discount\TicketsStrategy.class
 beans\daos\BookingDAO.class
 beans\controller\HelloController.class
-beans\formatter\AuditoriumFormatter.class
 beans\controller\UserController.class
 beans\models\User.class
+beans\models\converter\StringToLocalDateTimeConverter.class
 beans\configuration\AuditoriumConfiguration.class
 beans\controller\EventController.class
 beans\configuration\WebConfiguration.class
@@ -48,6 +49,5 @@ beans\aspects\LuckyWinnerAspect.class
 beans\aspects\DiscountAspect.class
 beans\configuration\AppConfiguration.class
 beans\models\Car.class
-beans\formatter\RateFormatter.class
 beans\configuration\StrategiesConfiguration.class
 util\CsvUtil.class

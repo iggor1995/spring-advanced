@@ -37,9 +37,8 @@
         <legend>Add Movie</legend>
         <form name="event" action="addEvent" method="post">
             Name : <input type="text" name="name" /> <br/>
-
             Base price :  <input type="number" name="basePrice" /> <br/>
-            Date and time : <input type="datetime-local" name="dateTime"/> <br/>
+            Date and time : <input type="datetime-local" name="dateTime" value="2017-06-01T08:30"/> <br/>
             <label>
                 <select name="rate">
                     <option selected="selected">HIGH</option>

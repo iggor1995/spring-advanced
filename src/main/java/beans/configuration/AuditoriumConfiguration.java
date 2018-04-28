@@ -1,10 +1,13 @@
 package beans.configuration;
 
 import beans.models.Auditorium;
+import beans.models.converter.StringToAuditoriumConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.format.FormatterRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +15,7 @@ import java.util.List;
 @Configuration
 @PropertySource({"classpath:auditoriums/blueHall.properties", "classpath:auditoriums/redHall.properties",
                  "classpath:auditoriums/yellowHall.properties"})
-public class AuditoriumConfiguration {
+public class AuditoriumConfiguration extends WebMvcConfigurerAdapter {
 
     @Value("${blue.hall.name}")
     private String blueHallName;
