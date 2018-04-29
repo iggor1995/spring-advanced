@@ -6,6 +6,8 @@ beans\models\Booking.class
 util\DataFiller.class
 beans\daos\db\UserDAOImpl.class
 beans\daos\UserDAO.class
+beans\models\converter\StringToLocalDateConverter.class
+beans\controller\TicketController.class
 beans\configuration\db\DataSourceConfiguration.class
 beans\daos\db\AuditoriumDAOImpl.class
 beans\daos\inmemory\InMemoryBookingDAO.class
@@ -15,6 +17,7 @@ beans\services\discount\DiscountStrategy.class
 beans\models\converter\StringToAuditoriumConverter.class
 beans\services\discount\BirthdayStrategy.class
 beans\aspects\CounterAspect.class
+beans\controller\PDFController.class
 beans\daos\db\BookingDAOImpl.class
 beans\daos\EventDAO.class
 beans\services\impl\BookingServiceImpl.class
@@ -31,13 +34,15 @@ Main.class
 beans\daos\AuditoriumDAO.class
 beans\services\api\DiscountService.class
 beans\daos\db\EventDAOImpl.class
+beans\models\converter\StringToUserConverter.class
 beans\services\impl\EventServiceImpl.class
 beans\models\Rate.class
 beans\services\api\BookingService.class
+beans\models\converter\StringToEventConverter.class
 beans\configuration\db\DbSessionFactory$1.class
 beans\services\discount\TicketsStrategy.class
 beans\daos\BookingDAO.class
-beans\controller\HelloController.class
+beans\PDFView\ReportPdfView.class
 beans\controller\UserController.class
 beans\models\User.class
 beans\models\converter\StringToLocalDateTimeConverter.class
@@ -48,6 +53,5 @@ beans\services\api\EventService.class
 beans\aspects\LuckyWinnerAspect.class
 beans\aspects\DiscountAspect.class
 beans\configuration\AppConfiguration.class
-beans\models\Car.class
 beans\configuration\StrategiesConfiguration.class
 util\CsvUtil.class

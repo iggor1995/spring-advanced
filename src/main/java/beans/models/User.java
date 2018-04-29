@@ -6,7 +6,6 @@ import java.time.LocalDate;
 
 public class User {
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
     private long      id;
     private String    email;

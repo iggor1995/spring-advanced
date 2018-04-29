@@ -1,5 +1,5 @@
 <html xmlns="http://www.w3.org/1999/html">
-<head><title> FreeMarker Spring MVC Hello World</title>
+<head><title> Add Movie</title>
 <#import "/spring.ftl" as spring/>
     <style>
         body, input {
@@ -28,7 +28,7 @@
 <body>
 <div id="header">
     <H2>
-        FreeMarker Spring MVC Hello World
+        Add Movie
     </H2>
 </div>
 
@@ -42,12 +42,10 @@
             <label>
                 <select name="rate">
                     <option selected="selected">HIGH</option>
-                    <option selected="selected">MID</option>
-                    <option selected="selected">LOW</option>
+                    <option>MID</option>
+                    <option>LOW</option>
                 </select>
             </label>
-            <#--Rate : <input type="text" name = "rate"> <br/>-->
-            <#--<input type="text" name="auditorium"><br/>-->
             <label>
                 <select name="auditorium">
                     <#list model["auditoriums"] as auditorium>

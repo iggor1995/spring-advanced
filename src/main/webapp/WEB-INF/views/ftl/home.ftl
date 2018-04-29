@@ -1,6 +1,6 @@
 <html>
 <head><title> Home </title>
-
+    <property name="exposeSessionAttributes"><value>true</value></property>
     <style>
         .button {
             background-color: #4CAF50;
@@ -43,28 +43,25 @@
     <H2>
         FreeMarker Spring MVC Hello World
     </H2>
+    <form name="user" action="registerPage" method="get">
+        <input type="submit" value="   Register   " /><br/>
+    </form>
 </div>
+<#if Session.registeredUser??>
+<H2>
+    Hello! ${Session.registeredUser.name}
+</H2>
+<#else>
+<fieldset>
+    <form name="login" action="login" method="post">
+        Email:  <input type="text" name="email"><br/>
+        Password: <input type="password" name="password"><br/>
+        <input type="submit" value="Log In"><br/>
+    </form>
+</fieldset>
+</#if>
 
 <div id="content">
-
-    <!--<fieldset>
-        <legend>Add Car</legend>
-        <form name="car" action="add" method="post">
-            Make : <input type="text" name="make" />	<br/>
-            Model: <input type="text" name="model" />	<br/>
-            <input type="submit" value="   Save   " />
-        </form>
-    </fieldset>
-    <fieldset>
-        <legend>Add User</legend>
-        <form name="user" action="register" method="post">
-            Name : <input type="text" name="name" /> <br/>
-            Email :  <input type="text" name="email" /> <br/>
-            Password :  <input type="password" name="password" /> <br/>
-            Birthday : <input type="date" name="birthday" value="2000-01-01"/> <br/>
-            <input type="submit" value="   Register   " />
-        </form>
-    </fieldset>-->
 
     <br/>
     <table class="datatable">
@@ -83,16 +80,33 @@
             <td>${event.rate}</td>
             <td>${event.basePrice}</td>
             <td>${event.dateTime}</td>
-
+            <td>
+                <#if Session.registeredUser??>
+                    <form name="booking" action="bookTicketsPage" method="post">
+                        <input type="hidden" name="eventId" value=${event.id}><br/>
+                        <input type="submit" value="   Book ticket   " /><br/>
+                    </form>
+                </#if>
+            </td>
         </tr>
     </#list>
     </table>
 
     <br/>
-    <form name="user" action="pageAddEvent" method="get">
-        <input type="submit" value="   Add Movie   " />
+    <form name="addEvent" action="pageAddEvent" method="get">
+        <input type="submit" value="   Add Movie   " /><br/>
     </form>
-
+    <fieldset>
+        <h3>Book Ti</h3>
+    </fieldset>
+    <fieldset>
+        <form name="PDF" action="report" method="post">
+            <input type="text" name="eventName" value="a"><br/>
+            <input type="text" name="auditorium" value="Blue hall"><br/>
+            <input type="datetime-local" name="date" value="2017-06-01T08:30"><br/>
+            <input type="submit" value="   Get tickets PDF   " /><br/>
+        </form>
+    </fieldset>
 </div>
 </body>
 </html>

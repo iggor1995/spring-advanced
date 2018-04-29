@@ -35,14 +35,6 @@
 <div id="content">
 
     <fieldset>
-        <legend>Add Car</legend>
-        <form name="car" action="add" method="post">
-            Make : <input type="text" name="make" />	<br/>
-            Model: <input type="text" name="model" />	<br/>
-            <input type="submit" value="   Save   " />
-        </form>
-    </fieldset>
-    <fieldset>
         <legend>Add User</legend>
         <form name="user" action="register" method="post">
             Name : <input type="text" name="name" /> <br/>
@@ -56,29 +48,20 @@
     <br/>
     <table class="datatable">
         <tr>
-            <th>Make</th>  <th>Model</th>
-        </tr>
-    <#list model["carList"] as car>
-        <tr>
-            <td>${car.make}</td>
-            <td>${car.model}</td>
-        </tr>
-    </#list>
-    </table>
-
-    <table class="datatable">
-        <tr>
             <th>Name</th>
             <th>Email</th>
             <th>Birthday</th>
         </tr>
-        <#list model["userList"] as user>
-            <tr>
-                <td>${user.name}</td>
-                <td>${user.email}</td>
-                <td>${user.birthday}</td>
-            </tr>
-        </#list>
+
+        <#if .data_model["userList"]??>
+            <#list model["userList"]! as user>
+                    <tr>
+                        <td>${user.name}</td>
+                        <td>${user.email}</td>
+                        <td>${user.birthday}</td>
+                    </tr>
+            </#list>
+        </#if>
     </table>
 
 </div>

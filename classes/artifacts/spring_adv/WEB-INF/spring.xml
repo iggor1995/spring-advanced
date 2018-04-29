@@ -25,6 +25,9 @@
             <set>
                 <bean class="beans.models.converter.StringToAuditoriumConverter" />
                 <bean class="beans.models.converter.StringToLocalDateTimeConverter" />
+                <bean class="beans.models.converter.StringToLocalDateConverter" />
+                <bean class="beans.models.converter.StringToUserConverter" />
+                <bean class="beans.models.converter.StringToEventConverter" />
             </set>
         </property>
     </bean>

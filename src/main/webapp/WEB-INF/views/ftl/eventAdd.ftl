@@ -42,8 +42,8 @@
             <label>
                 <select name="rate">
                     <option selected="selected">HIGH</option>
-                    <option selected="selected">MID</option>
-                    <option selected="selected">LOW</option>
+                    <option>MID</option>
+                    <option>LOW</option>
                 </select>
             </label>
             <label>

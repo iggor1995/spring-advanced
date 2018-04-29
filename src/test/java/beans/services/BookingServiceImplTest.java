@@ -20,6 +20,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,6 +46,7 @@ import static org.junit.Assert.assertTrue;
 @ContextConfiguration(classes = {AppConfiguration.class, DataSourceConfiguration.class, DbSessionFactory.class,
                                  TestBookingServiceConfiguration.class})
 @Transactional
+@ComponentScan("beans")
 public class BookingServiceImplTest {
 
     @Autowired
@@ -135,7 +137,7 @@ public class BookingServiceImplTest {
         double ticketPrice = bookingService.getTicketPrice(event.getName(), event.getAuditorium().getName(),
                                                            event.getDateTime(), ticket.getSeatsList(),
                                                            ticket.getUser());
-        Assert.assertEquals("Price is wrong", 297.6, ticketPrice, 0.00001);
+        Assert.assertEquals("Price is wrong", 208.31999999999996, ticketPrice, 0.00001);
     }
 
     @Test

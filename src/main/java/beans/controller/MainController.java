@@ -34,4 +34,9 @@ public class MainController {
         model.addAttribute("events", events);
         return "home";
     }
+
+    @RequestMapping(value = "/registerPage", method = RequestMethod.GET)
+    public String showRegisterPage(){
+        return "register";
+    }
 }
