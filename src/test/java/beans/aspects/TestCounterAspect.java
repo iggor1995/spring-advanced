@@ -4,6 +4,7 @@ import beans.aspects.mocks.CountAspectMock;
 import beans.configuration.AppConfiguration;
 import beans.configuration.db.DataSourceConfiguration;
 import beans.configuration.db.DbSessionFactory;
+import beans.daos.DaoException;
 import beans.daos.mocks.BookingDAOBookingMock;
 import beans.daos.mocks.DBAuditoriumDAOMock;
 import beans.daos.mocks.EventDAOMock;
@@ -11,6 +12,7 @@ import beans.daos.mocks.UserDAOMock;
 import beans.models.Event;
 import beans.models.Ticket;
 import beans.models.User;
+import beans.services.ServiceException;
 import beans.services.api.BookingService;
 import beans.services.api.EventService;
 import org.junit.After;
@@ -104,7 +106,7 @@ public class TestCounterAspect {
     }
 
     @Test
-    public void testGetPriceByName() {
+    public void testGetPriceByName() throws ServiceException {
         Event event = (Event) applicationContext.getBean("testEvent1");
         User user = (User) applicationContext.getBean("testUser1");
         List<Integer> seats = Arrays.asList(1, 2, 3, 4);
@@ -119,7 +121,7 @@ public class TestCounterAspect {
     }
 
     @Test
-    public void testBookTicketByName() {
+    public void testBookTicketByName() throws ServiceException, DaoException {
         User user = (User) applicationContext.getBean("testUser1");
         Ticket ticket1 = (Ticket) applicationContext.getBean("testTicket1");
         Ticket ticket2 = (Ticket) applicationContext.getBean("testTicket2");

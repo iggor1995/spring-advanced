@@ -28,7 +28,7 @@
 <body>
 <div id="header">
     <H2>
-        FreeMarker Spring MVC Hello World
+        FreeMarker Spring MVC Cinema
     </H2>
 </div>
 
@@ -44,26 +44,6 @@
             <input type="submit" value="   Register   " />
         </form>
     </fieldset>
-
-    <br/>
-    <table class="datatable">
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Birthday</th>
-        </tr>
-
-        <#if .data_model["userList"]??>
-            <#list model["userList"]! as user>
-                    <tr>
-                        <td>${user.name}</td>
-                        <td>${user.email}</td>
-                        <td>${user.birthday}</td>
-                    </tr>
-            </#list>
-        </#if>
-    </table>
-
 </div>
 </body>
 </html>

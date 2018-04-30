@@ -1,5 +1,6 @@
 package beans.services.impl;
 
+import beans.daos.DaoException;
 import beans.models.Event;
 import beans.models.User;
 import beans.services.api.DiscountService;
@@ -12,12 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 2/4/2016
- * Time: 11:23 AM
- */
 @Service
 @Transactional
 public class DiscountServiceImpl implements DiscountService {
@@ -33,7 +28,13 @@ public class DiscountServiceImpl implements DiscountService {
 
     @Override
     public double getDiscount(User user, Event event) {
-        final Double discount = strategies.stream().map(strategy -> strategy.calculateDiscount(user)).reduce(
+        final Double discount = strategies.stream().map(strategy -> {
+            try {
+                return strategy.calculateDiscount(user);
+            } catch (DaoException e) {
+                return null;
+            }
+        }).reduce(
                 (a, b) -> a + b).orElse(0.0);
         return Double.compare(discount, MAX_DISCOUNT) > 0 ? MAX_DISCOUNT : discount;
     }

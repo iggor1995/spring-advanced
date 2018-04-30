@@ -17,13 +17,13 @@ public interface EventDAO {
 
     Event getById(Long id);
 
-    Event create(Event event);
+    Event create(Event event) throws DaoException;
 
-    Event update(Event event);
+    Event update(Event event) throws DaoException;
 
     Event get(String eventName, Auditorium auditoriumName, LocalDateTime dateTime);
 
-    void delete(Event event);
+    void delete(Event event) throws DaoException;
 
     List<Event> getByName(String name);
 
@@ -37,15 +37,15 @@ public interface EventDAO {
 
     List<Event> getByAuditoriumAndDate(Auditorium auditorium, LocalDateTime date);
 
-    static void validateEvent(Event event) {
+    static void validateEvent(Event event) throws DaoException {
         if (Objects.isNull(event)) {
-            throw new NullPointerException("Event is [null]");
+            throw new DaoException("Event is [null]");
         }
         if (Objects.isNull(event.getName())) {
-            throw new NullPointerException("Event's name is [null]. Event: [" + event + "]");
+            throw new DaoException("Event's name is [null]. Event: [" + event + "]");
         }
         if (Objects.isNull(event.getRate())) {
-            throw new NullPointerException("Events's rate is [null]. Event: [" + event + "]");
+            throw new DaoException("Events's rate is [null]. Event: [" + event + "]");
         }
     }
 }

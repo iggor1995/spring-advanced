@@ -1,19 +1,16 @@
 package beans.services.api;
 
+import beans.daos.DaoException;
 import beans.models.Ticket;
 import beans.models.User;
 
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 2/1/2016
- * Time: 7:32 PM
- */
 public interface UserService {
 
-    User register(User user);
+    List<User> getAllUsers();
+
+    User register(User user) throws DaoException;
 
     void remove(User user);
 

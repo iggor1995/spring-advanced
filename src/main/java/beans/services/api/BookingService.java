@@ -1,22 +1,20 @@
 package beans.services.api;
 
+import beans.daos.DaoException;
 import beans.models.Ticket;
 import beans.models.User;
+import beans.services.ServiceException;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 2/3/2016
- * Time: 11:22 AM
- */
 public interface BookingService {
 
-    double getTicketPrice(String event, String auditorium, LocalDateTime dateTime, List<Integer> seats, User user);
+    List<Ticket> getAllTickets();
 
-    Ticket bookTicket(User user, Ticket ticket);
+    double getTicketPrice(String event, String auditorium, LocalDateTime dateTime, List<Integer> seats, User user) throws ServiceException;
+
+    Ticket bookTicket(User user, Ticket ticket) throws ServiceException, DaoException;
 
     List<Ticket> getTicketsForEvent(String event, String auditorium, LocalDateTime date);
 }

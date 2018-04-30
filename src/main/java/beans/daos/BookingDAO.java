@@ -10,30 +10,30 @@ import java.util.Objects;
 
 public interface BookingDAO {
 
-    Ticket create(User user, Ticket ticket);
+    Ticket create(User user, Ticket ticket) throws DaoException;
 
-    void delete(User user, Ticket booking);
+    void delete(User user, Ticket booking) throws DaoException;
 
     List<Ticket> getTickets(Event event);
 
-    List<Ticket> getTickets(User user);
+    List<Ticket> getTickets(User user) throws DaoException;
 
-    long countTickets(User user);
+    long countTickets(User user) throws DaoException;
 
     List<Ticket> getAllTickets();
 
-    static void validateUser(User user) {
+    static void validateUser(User user) throws DaoException {
         if (Objects.isNull(user)) {
-            throw new NullPointerException("User is [null]");
+            throw new DaoException("User is [null]");
         }
         if (Objects.isNull(user.getEmail())) {
-            throw new NullPointerException("User email is [null]");
+            throw new DaoException("User email is [null]");
         }
     }
 
-    static void validateTicket(Ticket ticket) {
+    static void validateTicket(Ticket ticket) throws DaoException {
         if (Objects.isNull(ticket)) {
-            throw new NullPointerException("Ticket is [null]");
+            throw new DaoException("Ticket is [null]");
         }
     }
 }

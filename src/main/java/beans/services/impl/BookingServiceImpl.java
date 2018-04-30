@@ -1,7 +1,9 @@
 package beans.services.impl;
 
 import beans.daos.BookingDAO;
+import beans.daos.DaoException;
 import beans.models.*;
+import beans.services.ServiceException;
 import beans.services.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -53,19 +55,24 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
+    public List<Ticket> getAllTickets() {
+        return bookingDAO.getAllTickets();
+    }
+
+    @Override
     public double getTicketPrice(String eventName, String auditoriumName, LocalDateTime dateTime, List<Integer> seats,
-                                 User user) {
+                                 User user) throws ServiceException {
         if (Objects.isNull(eventName)) {
-            throw new NullPointerException("Event name is [null]");
+            throw new ServiceException("Event name is [null]");
         }
         if (Objects.isNull(seats)) {
-            throw new NullPointerException("Seats are [null]");
+            throw new ServiceException("Seats are [null]");
         }
         if (Objects.isNull(user)) {
-            throw new NullPointerException("User is [null]");
+            throw new ServiceException("User is [null]");
         }
         if (seats.contains(null)) {
-            throw new NullPointerException("Seats contain [null]");
+            throw new ServiceException("Seats contain [null]");
         }
 
         final Auditorium auditorium = auditoriumService.getByName(auditoriumName);
@@ -116,20 +123,24 @@ public class BookingServiceImpl implements BookingService {
         final Optional<Integer> incorrectSeat = seats.stream().filter(
                 seat -> seat < minSeatNumber || seat > seatsNumber).findFirst();
         incorrectSeat.ifPresent(seat -> {
-            throw new IllegalArgumentException(
-                    String.format("Seat: [%s] is incorrect. Auditorium: [%s] has [%s] seats", seat, auditorium.getName(),
-                                  seatsNumber));
+            try {
+                throw new ServiceException(
+                        String.format("Seat: [%s] is incorrect. Auditorium: [%s] has [%s] seats", seat, auditorium.getName(),
+                                      seatsNumber));
+            } catch (ServiceException e) {
+                e.printStackTrace();
+            }
         });
     }
 
     @Override
-    public Ticket bookTicket(User user, Ticket ticket) {
+    public Ticket bookTicket(User user, Ticket ticket) throws ServiceException, DaoException {
         if (Objects.isNull(user)) {
-            throw new NullPointerException("User is [null]");
+            throw new ServiceException("User is [null]");
         }
         User foundUser = userService.getById(user.getId());
         if (Objects.isNull(foundUser)) {
-            throw new IllegalStateException("User: [" + user + "] is not registered");
+            throw new ServiceException("User: [" + user + "] is not registered");
         }
 
         List<Ticket> bookedTickets = bookingDAO.getTickets(ticket.getEvent());
@@ -139,7 +150,7 @@ public class BookingServiceImpl implements BookingService {
         if (!seatsAreAlreadyBooked)
             bookingDAO.create(user, ticket);
         else
-            throw new IllegalStateException("Unable to book ticket: [" + ticket + "]. Seats are already booked.");
+            throw new ServiceException("Unable to book ticket: [" + ticket + "]. Seats are already booked.");
 
         return ticket;
     }

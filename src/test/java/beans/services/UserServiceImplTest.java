@@ -4,6 +4,7 @@ import beans.configuration.AppConfiguration;
 import beans.configuration.TestUserServiceConfiguration;
 import beans.configuration.db.DataSourceConfiguration;
 import beans.configuration.db.DbSessionFactory;
+import beans.daos.DaoException;
 import beans.daos.mocks.UserDAOMock;
 import beans.models.User;
 import beans.services.api.UserService;
@@ -60,7 +61,7 @@ public class UserServiceImplTest {
         assertEquals("User should be the same", userService.getUserByEmail(email), user.withId(registeredId));
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = DaoException.class)
     public void testRegister_Exception() throws Exception {
         User testUser1 = (User) applicationContext.getBean("testUser1");
         userService.register(testUser1);

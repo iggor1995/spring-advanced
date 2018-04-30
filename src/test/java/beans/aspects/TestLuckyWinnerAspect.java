@@ -4,12 +4,14 @@ import beans.aspects.mocks.LuckyWinnerAspectMock;
 import beans.configuration.AppConfiguration;
 import beans.configuration.db.DataSourceConfiguration;
 import beans.configuration.db.DbSessionFactory;
+import beans.daos.DaoException;
 import beans.daos.mocks.BookingDAOBookingMock;
 import beans.daos.mocks.DBAuditoriumDAOMock;
 import beans.daos.mocks.EventDAOMock;
 import beans.daos.mocks.UserDAOMock;
 import beans.models.Ticket;
 import beans.models.User;
+import beans.services.ServiceException;
 import beans.services.api.BookingService;
 import org.junit.After;
 import org.junit.Before;
@@ -74,7 +76,7 @@ public class TestLuckyWinnerAspect {
     }
 
     @Test
-    public void testCalculateDiscount() {
+    public void testCalculateDiscount() throws ServiceException, DaoException {
         User user = (User) applicationContext.getBean("testUser1");
         User discountUser = new User(user.getId(), user.getEmail(), user.getName(), LocalDate.now(), user.getPassword());
         Ticket ticket1 = (Ticket) applicationContext.getBean("testTicket1");

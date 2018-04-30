@@ -1,5 +1,6 @@
 package beans.services.api;
 
+import beans.daos.DaoException;
 import beans.models.Auditorium;
 import beans.models.Event;
 
@@ -11,9 +12,9 @@ public interface EventService {
 
     Event getById(Long id);
 
-    Event create(Event event);
+    Event create(Event event) throws DaoException;
 
-    void remove(Event event);
+    void remove(Event event) throws DaoException;
 
     Event getEvent(String name, Auditorium auditorium, LocalDateTime dateTime);
 
@@ -25,5 +26,5 @@ public interface EventService {
 
     List<Event> getNextEvents(LocalDateTime to);
 
-    Event assignAuditorium(Event event, Auditorium auditorium, LocalDateTime date);
+    Event assignAuditorium(Event event, Auditorium auditorium, LocalDateTime date) throws DaoException;
 }

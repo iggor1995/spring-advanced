@@ -91,7 +91,7 @@ public class BookingServiceImplTest {
         assertEquals("Tickets should match", Arrays.asList(ticket), ticketsForEvent);
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = ServiceException.class)
     public void testBookTicket_NotRegistered() throws Exception {
         Event testEvent1 = (Event) applicationContext.getBean("testEvent1");
         List<Ticket> before = bookingService.getTicketsForEvent(testEvent1.getName(),
@@ -102,7 +102,7 @@ public class BookingServiceImplTest {
         bookingService.bookTicket(newUser, newTicket);
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = ServiceException.class)
     public void testBookTicket_AlreadyBooked() throws Exception {
         Event testEvent1 = (Event) applicationContext.getBean("testEvent1");
         List<Ticket> before = bookingService.getTicketsForEvent(testEvent1.getName(),
@@ -137,7 +137,7 @@ public class BookingServiceImplTest {
         double ticketPrice = bookingService.getTicketPrice(event.getName(), event.getAuditorium().getName(),
                                                            event.getDateTime(), ticket.getSeatsList(),
                                                            ticket.getUser());
-        Assert.assertEquals("Price is wrong", 208.31999999999996, ticketPrice, 0.00001);
+        Assert.assertEquals("Price is wrong", 297.59999999999996, ticketPrice, 0.00001);
     }
 
     @Test

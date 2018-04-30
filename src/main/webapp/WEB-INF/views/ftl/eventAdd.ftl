@@ -31,7 +31,14 @@
         Add Movie
     </H2>
 </div>
-
+<#if Session.registeredUser??>
+<H2>
+    Hello! ${Session.registeredUser.name}
+</H2>
+    <form name="logout" action="logout" method="get">
+        <input type="submit" value="   Logout  " /><br/>
+    </form>
+<#else>
 <div id="content">
     <fieldset>
         <legend>Add Movie</legend>

@@ -1,6 +1,7 @@
 package beans.daos.inmemory;
 
 import beans.daos.BookingDAO;
+import beans.daos.DaoException;
 import beans.models.Event;
 import beans.models.Ticket;
 import beans.models.User;
@@ -21,7 +22,7 @@ public class InMemoryBookingDAO implements BookingDAO {
     private static final Map<String, Set<Ticket>> db = new HashMap<>();
 
     @Override
-    public Ticket create(User user, Ticket ticket) {
+    public Ticket create(User user, Ticket ticket) throws DaoException {
         BookingDAO.validateTicket(ticket);
         BookingDAO.validateUser(user);
         db.putIfAbsent(user.getEmail(), new HashSet<>());
@@ -30,7 +31,7 @@ public class InMemoryBookingDAO implements BookingDAO {
     }
 
     @Override
-    public void delete(User user, Ticket ticket) {
+    public void delete(User user, Ticket ticket) throws DaoException {
         BookingDAO.validateTicket(ticket);
         BookingDAO.validateUser(user);
         final Set<Ticket> tickets = db.get(user.getEmail());
@@ -48,13 +49,13 @@ public class InMemoryBookingDAO implements BookingDAO {
     }
 
     @Override
-    public List<Ticket> getTickets(User user) {
+    public List<Ticket> getTickets(User user) throws DaoException {
         BookingDAO.validateUser(user);
         return db.getOrDefault(user.getEmail(), Collections.emptySet()).stream().collect(Collectors.toList());
     }
 
     @Override
-    public long countTickets(User user) {
+    public long countTickets(User user) throws DaoException {
         return getTickets(user).size();
     }
 

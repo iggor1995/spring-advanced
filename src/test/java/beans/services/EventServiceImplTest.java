@@ -4,6 +4,7 @@ import beans.configuration.AppConfiguration;
 import beans.configuration.TestEventServiceConfiguration;
 import beans.configuration.db.DataSourceConfiguration;
 import beans.configuration.db.DbSessionFactory;
+import beans.daos.DaoException;
 import beans.daos.mocks.EventDAOMock;
 import beans.models.Auditorium;
 import beans.models.Event;
@@ -101,7 +102,7 @@ public class EventServiceImplTest {
         assertEquals("Events should change", after, before);
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = DaoException.class)
     public void testCreate_Exception() throws Exception {
         Event addedEvent = (Event) applicationContext.getBean("testEvent1");
         eventService.create(addedEvent);

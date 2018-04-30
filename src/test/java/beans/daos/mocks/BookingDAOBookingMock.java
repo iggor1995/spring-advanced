@@ -1,5 +1,6 @@
 package beans.daos.mocks;
 
+import beans.daos.DaoException;
 import beans.daos.db.BookingDAOImpl;
 import beans.models.Ticket;
 import beans.models.User;
@@ -24,7 +25,13 @@ public class BookingDAOBookingMock extends BookingDAOImpl {
     public void init() {
         cleanup();
         System.out.println("creating " + initWith);
-        initWith.forEach((user, tickets) -> tickets.forEach(ticket -> create(user, ticket)));
+        initWith.forEach((user, tickets) -> tickets.forEach(ticket -> {
+            try {
+                create(user, ticket);
+            } catch (DaoException e) {
+                e.printStackTrace();
+            }
+        }));
     }
 
     public void cleanup() {getAllTickets().forEach(ticket -> delete(ticket.getUser(), ticket));}

@@ -2,6 +2,7 @@ package beans.daos.db;
 
 import beans.daos.AbstractDAO;
 import beans.daos.BookingDAO;
+import beans.daos.DaoException;
 import beans.models.Booking;
 import beans.models.Event;
 import beans.models.Ticket;
@@ -11,17 +12,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 20/2/16
- * Time: 9:00 PM
- */
 @Repository("bookingDAO")
 public class BookingDAOImpl extends AbstractDAO implements BookingDAO {
 
     @Override
-    public Ticket create(User user, Ticket ticket) {
+    public Ticket create(User user, Ticket ticket) throws DaoException {
         BookingDAO.validateTicket(ticket);
         BookingDAO.validateUser(user);
 

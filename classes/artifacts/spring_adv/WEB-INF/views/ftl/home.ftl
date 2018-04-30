@@ -2,18 +2,20 @@
 <head><title> Home </title>
     <property name="exposeSessionAttributes"><value>true</value></property>
     <style>
-        .button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 15px 25px;
-            text-align: center;
-            font-size: 16px;
-            cursor: pointer;
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
         }
 
-        .button:hover {
-            background-color: green;
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
         }
         body, input {
             font-family: Calibri, Arial;
@@ -34,35 +36,40 @@
         .datatable tr.odd {background-color:#eee}
         .datatable td {padding:2px;border:1px solid #888}
         #content { padding 5px; margin: 5px; text-align: center}
-        fieldset { width: 300px; padding: 5px; margin-bottom: 0px; }
         legend { font-weight: bold; }
     </style>
 
 <body>
 <div id="header">
     <H2>
-        FreeMarker Spring MVC Hello World
+        FreeMarker Spring MVC Cinema
     </H2>
+    <div style="background-color:black;color:white;padding:20px;">
+        <p>If there is no data - there are files attached: events.json and users.json</p>
+        <p>Upload those file using tools in this page</p>
+    </div><br/>
     <form name="user" action="registerPage" method="get">
-        <input type="submit" value="   Register   " /><br/>
+        <input type="submit" value="   Register   " />
     </form>
 </div>
 <#if Session.registeredUser??>
 <H2>
     Hello! ${Session.registeredUser.name}
 </H2>
+    <form name="logout" action="logout" method="get">
+        <input type="submit" value="   Logout  " /><br/>
+    </form>
 <#else>
-<fieldset>
-    <form name="login" action="login" method="post">
+<fieldset style="margin: right">
+    <form name="login" action="login" method="post" style="background-color: #4CAF50">
         Email:  <input type="text" name="email"><br/>
         Password: <input type="password" name="password"><br/>
         <input type="submit" value="Log In"><br/>
     </form>
 </fieldset>
 </#if>
-
-<div id="content">
-
+<#if  model["events"]?has_content>
+<div id="content" align="left">
     <br/>
     <table class="datatable">
         <tr>
@@ -91,22 +98,40 @@
         </tr>
     </#list>
     </table>
-
+</#if>
     <br/>
-    <form name="addEvent" action="pageAddEvent" method="get">
-        <input type="submit" value="   Add Movie   " /><br/>
-    </form>
     <fieldset>
-        <h3>Book Ti</h3>
+        <form name="addEvent" action="pageAddEvent" method="get">
+            <input type="submit" value="   Add Movie   " /><br/>
+        </form>
+    </fieldset>
+    <fieldset>
+        <h3>Get tickets in PDF</h3>
     </fieldset>
     <fieldset>
         <form name="PDF" action="report" method="post">
-            <input type="text" name="eventName" value="a"><br/>
-            <input type="text" name="auditorium" value="Blue hall"><br/>
-            <input type="datetime-local" name="date" value="2017-06-01T08:30"><br/>
             <input type="submit" value="   Get tickets PDF   " /><br/>
         </form>
     </fieldset>
 </div>
+<div align="center">
+<fieldset>
+    <h1>Please upload a file for users</h1>
+    <form method="post" action="usersUpload" enctype="multipart/form-data">
+        <input type="file" name="file"/>
+        <input type="submit"/>
+    </form>
+        <h1>Please upload a file for events</h1>
+        <form method="post" action="eventsUpload" enctype="multipart/form-data">
+            <input type="file" name="file"/>
+            <input type="submit"/>
+        </form>
+    </div>
+</fieldset>
+<fieldset>
+    <form name="showUsers" action="getUsers" method="get">
+        <input type="submit" value="   See all Users   " /><br/>
+    </form>
+</fieldset>
 </body>
 </html>

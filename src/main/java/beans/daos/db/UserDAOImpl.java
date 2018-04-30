@@ -1,6 +1,7 @@
 package beans.daos.db;
 
 import beans.daos.AbstractDAO;
+import beans.daos.DaoException;
 import beans.daos.UserDAO;
 import beans.models.User;
 import org.hibernate.criterion.Restrictions;
@@ -13,11 +14,11 @@ import java.util.Objects;
 public class UserDAOImpl extends AbstractDAO implements UserDAO {
 
     @Override
-    public User create(User user) {
+    public User create(User user) throws DaoException {
         UserDAO.validateUser(user);
         User byEmail = getByEmail(user.getEmail());
         if (Objects.nonNull(byEmail)) {
-            throw new IllegalStateException(
+            throw new DaoException(
                     String.format("Unable to store user: [%s]. User with email: [%s] is already created.", user,
                                   user.getEmail()));
         } else {

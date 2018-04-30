@@ -1,5 +1,6 @@
 package beans.services.impl;
 
+import beans.daos.DaoException;
 import beans.daos.EventDAO;
 import beans.models.Auditorium;
 import beans.models.Event;
@@ -23,11 +24,11 @@ public class EventServiceImpl implements EventService {
         this.eventDAO = eventDAO;
     }
 
-    public Event create(Event event) {
+    public Event create(Event event) throws DaoException {
         return eventDAO.create(event);
     }
 
-    public void remove(Event event) {
+    public void remove(Event event) throws DaoException {
         eventDAO.delete(event);
     }
 
@@ -55,7 +56,7 @@ public class EventServiceImpl implements EventService {
         return eventDAO.getNext(to);
     }
 
-    public Event assignAuditorium(Event event, Auditorium auditorium, LocalDateTime date) {
+    public Event assignAuditorium(Event event, Auditorium auditorium, LocalDateTime date) throws DaoException {
         final Event updatedEvent = new Event(event.getId(), event.getName(), event.getRate(), event.getBasePrice(), date, auditorium);
         return eventDAO.update(updatedEvent);
     }

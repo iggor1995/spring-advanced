@@ -1,8 +1,10 @@
 package beans.controller;
 
+import beans.daos.DaoException;
 import beans.models.Event;
 import beans.models.Ticket;
 import beans.models.User;
+import beans.services.ServiceException;
 import beans.services.api.AuditoriumService;
 import beans.services.api.BookingService;
 import beans.services.api.EventService;
@@ -66,7 +68,7 @@ public class TicketController {
     }
     @RequestMapping(value = "/bookTickets", method = RequestMethod.POST)
     public String createAndBookTicket(@RequestParam("eventId") String eventId, @RequestParam("userId") String userId,
-                                      @RequestParam("seat") Integer seat){
+                                      @RequestParam("seat") Integer seat) throws ServiceException, DaoException {
         Event event = eventService.getById(Long.valueOf(eventId));
         User user = userService.getById(Long.valueOf(userId));
         List<Integer> seatsList = new ArrayList<>();

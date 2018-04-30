@@ -1,5 +1,6 @@
 package beans.services.impl;
 
+import beans.daos.DaoException;
 import beans.daos.UserDAO;
 import beans.models.Ticket;
 import beans.models.User;
@@ -22,7 +23,12 @@ public class UserServiceImpl implements UserService {
         this.userDAO = userDAO;
     }
 
-    public User register(User user) {
+    @Override
+    public List<User> getAllUsers() {
+        return userDAO.getAll();
+    }
+
+    public User register(User user) throws DaoException {
         return userDAO.create(user);
     }
 

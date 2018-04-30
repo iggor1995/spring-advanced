@@ -1,5 +1,6 @@
 package beans.daos.inmemory;
 
+import beans.daos.DaoException;
 import beans.daos.EventDAO;
 import beans.models.Auditorium;
 import beans.models.Event;
@@ -28,12 +29,12 @@ public class InMemoryEventDAO implements EventDAO {
     }
 
     @Override
-    public Event create(Event event) {
+    public Event create(Event event) throws DaoException {
         return safeUpdate(event);
     }
 
     @Override
-    public Event update(Event event) {
+    public Event update(Event event) throws DaoException {
         EventDAO.validateEvent(event);
         final List<Event> assignedEvents = getByAuditoriumAndDate(event.getAuditorium(), event.getDateTime());
         if (assignedEvents.isEmpty() || (assignedEvents.size() == 1 && Objects.equals(assignedEvents.get(0).getName(),
@@ -55,7 +56,7 @@ public class InMemoryEventDAO implements EventDAO {
     }
 
     @Override
-    public void delete(Event event) {
+    public void delete(Event event) throws DaoException {
         EventDAO.validateEvent(event);
         final List<Event> events = db.get(event.getName());
         if (Objects.nonNull(events)) {
@@ -111,7 +112,7 @@ public class InMemoryEventDAO implements EventDAO {
         return filteredByAuditorium.collect(Collectors.toList());
     }
 
-    private Event safeUpdate(Event event) {
+    private Event safeUpdate(Event event) throws DaoException {
         EventDAO.validateEvent(event);
         final List<Event> assignedEvents = getByAuditoriumAndDate(event.getAuditorium(), event.getDateTime());
         if (assignedEvents.isEmpty()) {

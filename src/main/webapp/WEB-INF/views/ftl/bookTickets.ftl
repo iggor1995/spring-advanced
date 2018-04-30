@@ -41,7 +41,7 @@
 <body>
 <div id="header">
     <H2>
-        FreeMarker Spring MVC Hello World
+        FreeMarker Spring MVC Cinema
     </H2>
     <form name="user" action="registerPage" method="get">
         <input type="submit" value="   Register   " /><br/>
@@ -51,14 +51,9 @@
 <H2>
     Hello! ${Session.registeredUser.name}
 </H2>
-<#else>
-<fieldset>
-    <form name="login" action="login" method="post">
-        Email:  <input type="text" name="email"><br/>
-        Password: <input type="password" name="password"><br/>
-        <input type="submit" value="Log In"><br/>
-    </form>
-</fieldset>
+<form name="logout" action="logout" method="get">
+    <input type="submit" value="   Logout  " /><br/>
+</form>
 </#if>
 
 <div id="content">

@@ -1,6 +1,8 @@
 package beans.models;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import beans.models.deserializer.AuditoriumDeserializer;
+import beans.models.deserializer.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.time.LocalDateTime;
 
@@ -10,9 +12,10 @@ public class Event {
     private String        name;
     private Rate          rate;
     private double        basePrice;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime dateTime;
-    private Auditorium    auditorium;
+    @JsonDeserialize(using = AuditoriumDeserializer.class)
+    private Auditorium auditorium;
 
     public Event() {
     }

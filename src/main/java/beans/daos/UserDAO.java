@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public interface UserDAO {
 
-    User create(User user);
+    User create(User user) throws DaoException;
 
     void delete(User user);
 

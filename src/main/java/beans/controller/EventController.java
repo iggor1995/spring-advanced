@@ -1,5 +1,6 @@
 package beans.controller;
 
+import beans.daos.DaoException;
 import beans.models.Auditorium;
 import beans.models.Event;
 import beans.services.api.AuditoriumService;
@@ -37,7 +38,7 @@ public class EventController {
     }
 
     @RequestMapping(value = "/addEvent", method = RequestMethod.POST)
-    public String createEvent(@ModelAttribute("event") @Valid Event event, BindingResult result){
+    public String createEvent(@ModelAttribute("event") @Valid Event event, BindingResult result) throws DaoException {
         System.out.println(result);
         if(event != null){
             eventService.create(event);

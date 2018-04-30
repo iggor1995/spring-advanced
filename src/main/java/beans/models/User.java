@@ -1,13 +1,16 @@
 package beans.models;
 
+import beans.models.deserializer.LocalDateDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
 public class User {
 
-    private LocalDate birthday;
     private long      id;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    private LocalDate birthday;
     private String    email;
     private String    name;
     private String password;

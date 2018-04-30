@@ -1,6 +1,7 @@
 package beans.daos.db;
 
 import beans.daos.AbstractDAO;
+import beans.daos.DaoException;
 import beans.daos.EventDAO;
 import beans.models.Auditorium;
 import beans.models.Event;
@@ -16,12 +17,12 @@ import java.util.List;
 public class EventDAOImpl extends AbstractDAO implements EventDAO {
 
     @Override
-    public Event create(Event event) {
+    public Event create(Event event) throws DaoException {
         System.out.println("Creating " + event);
         EventDAO.validateEvent(event);
         List<Event> byAuditoriumAndDate = getByAuditoriumAndDate(event.getAuditorium(), event.getDateTime());
         if (byAuditoriumAndDate.size() > 0) {
-            throw new IllegalStateException(String.format(
+            throw new DaoException(String.format(
                     "Unable to store event: [%s]. Event with such auditorium: [%s] on date: [%s] is already created.",
                     event, event.getAuditorium(), event.getDateTime()));
         } else {

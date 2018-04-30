@@ -9,12 +9,6 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Arrays;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 2/12/2016
- * Time: 1:36 PM
- */
 @Configuration
 public class TestUserServiceConfiguration {
 

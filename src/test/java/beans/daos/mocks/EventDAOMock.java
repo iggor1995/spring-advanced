@@ -1,16 +1,11 @@
 package beans.daos.mocks;
 
+import beans.daos.DaoException;
 import beans.daos.db.EventDAOImpl;
 import beans.models.Event;
 
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 06/2/16
- * Time: 2:41 PM
- */
 public class EventDAOMock extends EventDAOImpl {
 
     private final List<Event> events;
@@ -21,7 +16,13 @@ public class EventDAOMock extends EventDAOImpl {
 
     public void init() {
         cleanup();
-        events.forEach(this :: create);
+        events.forEach((event) -> {
+            try {
+                create(event);
+            } catch (DaoException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     public void cleanup() {

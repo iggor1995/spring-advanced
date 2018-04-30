@@ -27,9 +27,9 @@ public class PDFController {
     BookingService bookingService;
 
     @RequestMapping(value = "/report", method = RequestMethod.POST)
-    public String handleAllTradesRequests (@RequestParam("eventName") String event, @RequestParam("auditorium") String auditorium,
-                                           @RequestParam("date")LocalDateTime dateTime, Model model) {
-        List<Ticket> tickets = bookingService.getTicketsForEvent(event, auditorium, dateTime);
+    public String handleAllTradesRequests (Model model) {
+        List<Ticket> tickets = bookingService.getAllTickets();
+
         model.addAttribute("report", tickets);
         return "reportView";
     }
