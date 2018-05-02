@@ -2,16 +2,19 @@
   {
     "name"  : "SammyShark",
     "email"  : "sammy@mail.com",
+	 "password"  : "asd",
     "birthday"    : "2000-01-01"
   },
   {
     "name"  : "SallyShark",
     "email"  : "sally@mail.com",
+	 "password"  : "asd",
     "birthday"    : "2000-01-01"
   },
   {
     "name"  : "RallyShark",
     "email"  : "rally@mail.com",
+	  "password"  : "asd",
     "birthday"    : "2000-01-01"
   }
 ]

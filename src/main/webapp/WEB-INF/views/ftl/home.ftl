@@ -1,73 +1,128 @@
 <html>
-<head><title> Home </title>
-    <property name="exposeSessionAttributes"><value>true</value></property>
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-        body, input {
-            font-family: Calibri, Arial;
-            margin: 0px;
-            padding: 0px;
-        }
-        #header h2 {
-            color: white;
-            background-color: #3275A8;
-            height: 50px;
-            padding: 5px 0 0 5px;
-            font-size: 20px;
-        }
-
-        .datatable {margin-bottom:5px;border:1px solid #eee;border-collapse:collapse;width:400px;max-width:100%;font-family:Calibri}
-        .datatable th {padding:3px;border:1px solid #888;height:30px;background-color:#B2D487;text-align:center;vertical-align:middle;color:#444444}
-        .datatable tr {border:1px solid #888}
-        .datatable tr.odd {background-color:#eee}
-        .datatable td {padding:2px;border:1px solid #888}
-        #content { padding 5px; margin: 5px; text-align: center}
-        legend { font-weight: bold; }
-    </style>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+        integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+        crossorigin="anonymous"></script>
+<head>
+</head>
+<style>
+    body {
+        padding-top: 100px;
+    }
+    #mainNav {
+        background: grey;
+    }
+</style>
 <body>
-<div id="header">
-    <H2>
-        FreeMarker Spring MVC Cinema
-    </H2>
+    <div>
+        <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse" id="mainNav">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample"
+                    aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
+                Menu <i class="fa fa-bars"></i>
+            </button>
+            <div class="container">
+                <a class="navbar-brand" href="#page-top">Brand</a>
+                <div class="collapse navbar-collapse" id="navbarExample">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="btn btn-primary" data-toggle="modal" href="#myModal" >Login</a>
+                        </li>
+                            <#if Session.registeredUser??>
+                                <form name="logout" action="logout" method="get">
+                                    <input type="submit" value="   Logout  " /><br/>
+                                </form>
+                            </#if>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+        </nav>
+    </div>
+
     <div style="background-color:black;color:white;padding:20px;">
         <p>If there is no data - there are files attached: /resources/json events.json and users.json</p>
         <p>Upload those files using tools in this page</p>
     </div><br/>
-    <form name="user" action="registerPage" method="get">
-        <input type="submit" value="   Register   " />
-    </form>
+<#--LOGIN-->
+<#if Session.registeredUser??><#else>
+<div class="container">
+    <div class="row">
+        <#--<a class="btn btn-primary" data-toggle="modal" href="#myModal" >Login</a>-->
+
+        <div class="modal hide" id="myModal">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">x</button>
+                <h3>Login to MyWebsite.com</h3>
+            </div>
+            <div class="modal-body">
+                <form method="post" action='login' name="login_form">
+                    <p><input type="text" class="span3" name="email" placeholder="Email"></p>
+                    <p><input type="password" class="span3" name="password" placeholder="Password"></p>
+                    <p><button type="submit" class="btn btn-primary">Sign in</button>
+                        <a href="#">Forgot Password?</a>
+                    </p>
+                </form>
+            </div>
+            <div class="modal-footer">
+                New To MyWebsite.com?
+                <a href="#" class="btn btn-primary">Register</a>
+            </div>
+        </div>
+    </div>
 </div>
-<#if Session.registeredUser??>
-<H2>
-    Hello! ${Session.registeredUser.name}
-</H2>
-    <form name="logout" action="logout" method="get">
-        <input type="submit" value="   Logout  " /><br/>
-    </form>
-<#else>
-<fieldset style="margin: right">
-    <form name="login" action="login" method="post" style="background-color: #4CAF50">
-        Email:  <input type="text" name="email"><br/>
-        Password: <input type="password" name="password"><br/>
-        <input type="submit" value="Log In"><br/>
-    </form>
-</fieldset>
 </#if>
+<#--/LOGIN-->
+<#--CAROUSEL-->
+<div class="container-fluid p-0">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src= "resources/images/tombRaider.jpg" alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="resources/images/MazeRunner.jpg" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="resources/images/Avengers.jpg" alt="Third slide">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<#--/CAROUSEL-->
+
+
+
+<form name="user" action="registerPage" method="get">
+    <input type="submit" value="   Register   " />
+</form>
+
 <#if  model["events"]?has_content>
 <div id="content" align="left">
     <br/>
