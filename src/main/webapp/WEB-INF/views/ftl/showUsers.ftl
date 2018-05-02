@@ -1,4 +1,17 @@
 <html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+        integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+        crossorigin="anonymous"></script>
 <head><title> Registeration</title>
 
     <style>
@@ -41,23 +54,37 @@
 </#if>
 <div id="content">
 
-    <table class="datatable">
+<#--TABLE-->
+<#if  model["users"]?has_content>
+<div class="container">
+    <table class="table table-dark table-striped">
+        <thead>
         <tr>
             <th>Name</th>
             <th>Email</th>
             <th>Birthday</th>
         </tr>
-
-    <#if model["users"]??>
-        <#list model["users"]! as user>
-            <tr>
-                <td>${user.name}</td>
-                <td>${user.email}</td>
-                <td>${user.birthday}</td>
-            </tr>
-        </#list>
-    </#if>
+        </thead>
+        <tbody>
+                <#list model["users"]! as user>
+                <tr>
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td>${user.birthday}</td>
+                </tr>
+                </#list>
+        </tbody>
     </table>
+</#if>
+</div>
+<#--/TABLE-->
+
+    <h1>Please upload a file for users</h1>
+    <form method="post" action="usersUpload" enctype="multipart/form-data">
+        <input type="file" name="file"/>
+        <input type="submit"/>
+    </form>
+
     <fieldset>
         <form name="showUsers" action="home" method="get">
             <input type="submit" value="   Home  " /><br/>

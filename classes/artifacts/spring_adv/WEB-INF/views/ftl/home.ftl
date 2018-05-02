@@ -19,24 +19,29 @@
         padding-top: 100px;
     }
     #mainNav {
-        background: grey;
+        opacity: 0.8;
+        background: steelblue;
     }
 </style>
 <body>
-
-    <div>
+<#--NAVBAR-->
         <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse" id="mainNav">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample"
                     aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
                 Menu <i class="fa fa-bars"></i>
             </button>
             <div class="container">
-                <a class="navbar-brand" href="#page-top">Brand</a>
+                <li class="nav-item">
+                    <a class="btn btn-primary" data-toggle="modal" href="#myModal" style="background-color: #9fcdff">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary" data-toggle="modal" href="#myRegisterModal" style="background-color: #9fcdff">Register</a>
+                </li>
+                <form name="showUsers" action="getUsers" method="get" style="background-color: #9fcdff">
+                    <button type="submit" class="btn btn-primary">See all users</button><br/>
+                </form>
                 <div class="collapse navbar-collapse" id="navbarExample">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="btn btn-primary" data-toggle="modal" href="#myModal" >Login</a>
-                        </li>
                             <#if Session.registeredUser??>
                                 <form name="logout" action="logout" method="get">
                                     <input type="submit" value="   Logout  " /><br/>
@@ -52,7 +57,7 @@
                     </div>
                 </div>
         </nav>
-    </div>
+<#--/NAVBAR-->
 
     <div style="background-color:black;color:white;padding:20px;">
         <p>If there is no data - there are files attached: /resources/json events.json and users.json</p>
@@ -60,33 +65,34 @@
     </div><br/>
 <#--LOGIN-->
 <#if Session.registeredUser??><#else>
-<div class="container">
-    <div class="row">
-        <#--<a class="btn btn-primary" data-toggle="modal" href="#myModal" >Login</a>-->
+    <div class="container">
+        <div class="row">
+            <#--<a class="btn btn-primary" data-toggle="modal" href="#myModal" >Login</a>-->
 
-        <div class="modal hide" id="myModal">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">x</button>
-                <h3>Login to MyWebsite.com</h3>
-            </div>
-            <div class="modal-body">
-                <form method="post" action='login' name="login_form">
-                    <p><input type="text" class="span3" name="email" placeholder="Email"></p>
-                    <p><input type="password" class="span3" name="password" placeholder="Password"></p>
-                    <p><button type="submit" class="btn btn-primary">Sign in</button>
-                        <a href="#">Forgot Password?</a>
-                    </p>
-                </form>
-            </div>
-            <div class="modal-footer">
-                New To MyWebsite.com?
-                <a href="#" class="btn btn-primary">Register</a>
+            <div class="modal hide" id="myModal">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">x</button>
+                    <h3>Login to MyWebsite.com</h3>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action='login' name="login_form">
+                        <p><input type="text" class="span3" name="email" placeholder="Email"></p>
+                        <p><input type="password" class="span3" name="password" placeholder="Password"></p>
+                        <p><button type="submit" class="btn btn-primary">Sign in</button>
+                            <a href="#">Forgot Password?</a>
+                        </p>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    New To spring_adv.com?
+                    <a class="btn btn-primary" data-toggle="modal" href="#myModal" style="background-color: #9fcdff">Register</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </#if>
 <#--/LOGIN-->
+
 <#--CAROUSEL-->
 <div class="container-fluid p-0">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -118,25 +124,50 @@
 </div>
 <#--/CAROUSEL-->
 
+<#--REGISTER-->
+    <div class="container">
+        <div class="row">
+        <#--<a class="btn btn-primary" data-toggle="modal" href="#myModal" >Login</a>-->
+            <div class="modal hide" id="myRegisterModal">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">x</button>
+                    <h3>Login to MyWebsite.com</h3>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action='register' name="login_form">
+                        <p><input type="text" class="span3" name="name" placeholder="Email"></p>
+                        <p><input type="text" class="span3" name="email" placeholder="Email"></p>
+                        <p><input type="password" class="span3" name="password" placeholder="Password"></p>
+                        <p><input type="date" class="span3" name="birthday" value="2000-01-01"></p>
+                        <p><button type="submit" class="btn btn-primary">Register</button>
+                            <a href="#">Forgot Password?</a>
+                        </p>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    Do you have Login?
+                    <a class="btn btn-primary" data-toggle="modal" href="#myModal" >Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<#--/REGISTER-->
 
-
-<form name="user" action="registerPage" method="get">
-    <input type="submit" value="   Register   " />
-</form>
-
+<#--TABLE-->
 <#if  model["events"]?has_content>
-<div id="content" align="left">
-    <br/>
-    <table class="datatable">
+<div class="container">
+    <table class="table table-dark table-striped">
+        <thead>
         <tr>
             <th>Auditorium</th>
             <th>Name</th>
             <th>Rate</th>
             <th>Price</th>
             <th>Date</th>
-
         </tr>
-    <#list model["events"] as event>
+        </thead>
+        <tbody>
+        <#list model["events"] as event>
         <tr>
             <td>${event.auditorium.name}</td>
             <td>${event.name}</td>
@@ -152,24 +183,14 @@
                 </#if>
             </td>
         </tr>
-    </#list>
+        </#list>
+        </tbody>
     </table>
 </#if>
-    <br/>
-    <fieldset>
-        <form name="addEvent" action="pageAddEvent" method="get">
-            <input type="submit" value="   Add Movie   " /><br/>
-        </form>
-    </fieldset>
-    <fieldset>
-        <h3>Get tickets in PDF</h3>
-    </fieldset>
-    <fieldset>
-        <form name="PDF" action="report" method="post">
-            <input type="submit" value="   Get tickets PDF   " /><br/>
-        </form>
-    </fieldset>
 </div>
+<#--/TABLE-->
+
+
 <div align="center">
 <fieldset>
     <h1>Please upload a file for users</h1>
