@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="beans.services.UserServiceImplTest" time="0.724" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="beans.services.UserServiceImplTest" time="0.549" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="2016.2.5"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -61,10 +61,10 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="beans.services.UserServiceImplTest" name="testRegister" time="0.016"/>
   <testcase classname="beans.services.UserServiceImplTest" name="testRemove" time="0"/>
-  <testcase classname="beans.services.UserServiceImplTest" name="testUsersGetByName" time="0.015"/>
+  <testcase classname="beans.services.UserServiceImplTest" name="testRegister" time="0"/>
+  <testcase classname="beans.services.UserServiceImplTest" name="testGetUserByEmail" time="0.016"/>
   <testcase classname="beans.services.UserServiceImplTest" name="testRegister_Exception" time="0"/>
-  <testcase classname="beans.services.UserServiceImplTest" name="testGetUserByEmail_Null" time="0.016"/>
-  <testcase classname="beans.services.UserServiceImplTest" name="testGetUserByEmail" time="0"/>
+  <testcase classname="beans.services.UserServiceImplTest" name="testUsersGetByName" time="0.016"/>
+  <testcase classname="beans.services.UserServiceImplTest" name="testGetUserByEmail_Null" time="0"/>
 </testsuite>

@@ -1,17 +1,6 @@
+<#import "tags/nav.ftl"as u>
 <html>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
-        integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
-        crossorigin="anonymous"></script>
+
 <head><title> Registeration</title>
 
     <style>
@@ -39,21 +28,9 @@
     </style>
 
 <body>
-<div id="header">
-    <H2>
-        FreeMarker Spring MVC Cinema
-    </H2>
-</div>
-<#if Session.registeredUser??>
-<H2>
-    Hello! ${Session.registeredUser.name}
-</H2>
-    <form name="logout" action="logout" method="get">
-        <input type="submit" value="   Logout  " /><br/>
-    </form>
-</#if>
-<div id="content">
+<@u.page/>
 
+<div id="content">
 <#--TABLE-->
 <#if  model["users"]?has_content>
 <div class="container">
