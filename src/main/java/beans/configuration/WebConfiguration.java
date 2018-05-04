@@ -1,6 +1,9 @@
 package beans.configuration;
 
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import javax.servlet.Filter;
 
 public class WebConfiguration extends AbstractAnnotationConfigDispatcherServletInitializer {
 

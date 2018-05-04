@@ -1,6 +1,7 @@
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\db\DataSourceConfiguration.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\impl\BookingServiceImpl.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\AuditoriumDAO.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\api\UserDetailsService.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\api\BookingService.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\controller\ExceptionHandlerController.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\api\AuditoriumService.java
@@ -13,6 +14,7 @@ C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\Rate.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\discount\BirthdayStrategy.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\deserializer\AuditoriumDeserializer.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\EventDAO.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\Role.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\User.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\ServiceException.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\controller\UserController.java
@@ -21,6 +23,7 @@ C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\api\Dis
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\Auditorium.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\impl\EventServiceImpl.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\SpringWebConfig.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\SecurityConfiguration.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\impl\DiscountServiceImpl.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\converter\StringToEventConverter.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\controller\EventController.java
@@ -33,6 +36,7 @@ C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\aspects\LuckyWin
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\Main.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\WebConfiguration.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\PDFView\ReportPdfView.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\impl\UserDetailsServiceImpl.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\util\CsvUtil.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\aspects\CounterAspect.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\db\AuditoriumDAOImpl.java

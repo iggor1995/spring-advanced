@@ -1,20 +1,24 @@
 [
   {
-    "name"  : "SammyShark",
-    "email"  : "sammy@mail.com",
-	 "password"  : "asd",
-    "birthday"    : "2000-01-01"
+    "name"      : "SammyShark",
+    "email"     : "sammy@mail.com",
+	"password"  : "asd",
+    "birthday"  : "2000-01-01",
+    "role"      : "REGISTERED_USER"
   },
   {
-    "name"  : "SallyShark",
-    "email"  : "sally@mail.com",
-	 "password"  : "asd",
-    "birthday"    : "2000-01-01"
+    "name"      : "SallyShark",
+    "email"     : "sally@mail.com",
+	"password"  : "asd",
+    "birthday"  : "2000-01-01",
+    "role"      : "REGISTERED_USER"
+
   },
   {
-    "name"  : "RallyShark",
-    "email"  : "rally@mail.com",
-	  "password"  : "asd",
-    "birthday"    : "2000-01-01"
+    "name"      : "RallyShark",
+    "email"     : "rally@mail.com",
+    "password"  : "asd",
+    "birthday"  : "2000-01-01",
+    "role"      : "BOOKING_MANAGER"
   }
 ]

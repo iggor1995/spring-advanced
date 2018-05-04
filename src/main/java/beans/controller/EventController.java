@@ -30,14 +30,14 @@ public class EventController {
     @Qualifier("auditoriumServiceImpl")
     AuditoriumService auditoriumService;
 
-    @RequestMapping(value = "/pageAddEvent", method = RequestMethod.GET)
+    @RequestMapping(value = "manager/pageAddEvent", method = RequestMethod.GET)
     public String addEventPage(@ModelAttribute("model") ModelMap model){
         List<Auditorium> auditoriums = auditoriumService.getAuditoriums();
         model.addAttribute("auditoriums", auditoriums);
         return "eventAdd";
     }
 
-    @RequestMapping(value = "/addEvent", method = RequestMethod.POST)
+    @RequestMapping(value = "manager/addEvent", method = RequestMethod.POST)
     public String createEvent(@ModelAttribute("event") @Valid Event event, BindingResult result) throws DaoException {
         System.out.println(result);
         if(event != null){

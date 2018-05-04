@@ -54,7 +54,6 @@ public class FileUploadController {
         }
     }
 
-
     @RequestMapping(value = "/eventsUpload", method = RequestMethod.POST)
     public String uploadEventsJson(@RequestParam("file") MultipartFile file){
         if (!file.isEmpty()) {

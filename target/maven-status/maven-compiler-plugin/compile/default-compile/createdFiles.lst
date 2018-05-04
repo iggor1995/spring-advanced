@@ -10,11 +10,15 @@ beans\daos\UserDAO.class
 beans\models\converter\StringToLocalDateConverter.class
 beans\controller\TicketController.class
 beans\configuration\db\DataSourceConfiguration.class
+beans\models\Role.class
 beans\daos\db\AuditoriumDAOImpl.class
 beans\controller\FileUploadController.class
+beans\services\api\UserDetailsService.class
+beans\configuration\SecurityConfiguration.class
 beans\daos\inmemory\InMemoryBookingDAO.class
 beans\daos\inmemory\InMemoryAuditoriumDAO.class
 beans\daos\inmemory\InMemoryEventDAO.class
+beans\services\impl\UserDetailsServiceImpl.class
 beans\services\discount\DiscountStrategy.class
 beans\controller\FileUploadController$1.class
 beans\models\converter\StringToAuditoriumConverter.class

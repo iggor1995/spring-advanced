@@ -1,6 +1,7 @@
 package beans.services.discount;
 
 import beans.daos.mocks.BookingDAODiscountMock;
+import beans.models.Role;
 import beans.models.User;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +26,14 @@ public class TicketsStrategyTest {
     @org.junit.Test
     public void testCalculateDiscount_UserHasDiscount() throws Exception {
         System.out.println(strategy.getClass());
-        User userWithDiscount = new User("test@ema.il", bookingDAODiscountMock.userThatBookedTickets, LocalDate.now(), "asd");
+        User userWithDiscount = new User("test@ema.il", bookingDAODiscountMock.userThatBookedTickets, LocalDate.now(), "asd", Role.REGISTERED_USER);
         double discount = strategy.calculateDiscount(userWithDiscount);
         assertEquals("User: [" + userWithDiscount + "] has tickets discount", strategy.ticketsDiscountValue, discount, 0.00001);
     }
 
     @org.junit.Test
     public void testCalculateDiscount_UserHasNoDiscount() throws Exception {
-        User userWithoutDiscount = new User("test@ema.il", "Test Name 2", LocalDate.now().minus(1, ChronoUnit.DAYS), "asd");
+        User userWithoutDiscount = new User("test@ema.il", "Test Name 2", LocalDate.now().minus(1, ChronoUnit.DAYS), "asd", Role.REGISTERED_USER);
         double discount = strategy.calculateDiscount(userWithoutDiscount);
         assertEquals("User: [" + userWithoutDiscount + "] doesn't have tickets discount", strategy.defaultDiscount, discount, 0.00001);
     }

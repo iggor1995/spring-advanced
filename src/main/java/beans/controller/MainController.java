@@ -39,4 +39,9 @@ public class MainController {
     public String showRegisterPage(){
         return "register";
     }
+
+    @RequestMapping(value = "/loginPage", method = RequestMethod.GET)
+    public String showLoginPage(){
+        return "login";
+    }
 }

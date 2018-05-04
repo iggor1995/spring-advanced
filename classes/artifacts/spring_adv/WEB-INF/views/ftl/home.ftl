@@ -62,13 +62,11 @@
                 </form>
         </div>
         <div class="span6" style="background-color: #9fcdff; border: 2px solid deepskyblue" align="center">
-            <form class="form-signin">
                 <form method="post" action="usersUpload" enctype="multipart/form-data">
                     <h2 class="form-signin-heading">Upload users</h2>
                     <input type="file" name="file"/>
                     <button type="submit" class="btn btn-primary">Load users</button>
                 </form>
-            </form>
         </div>
     </div>
 <#--/UPLOAD-->

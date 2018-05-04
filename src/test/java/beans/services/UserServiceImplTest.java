@@ -6,6 +6,7 @@ import beans.configuration.db.DataSourceConfiguration;
 import beans.configuration.db.DbSessionFactory;
 import beans.daos.DaoException;
 import beans.daos.mocks.UserDAOMock;
+import beans.models.Role;
 import beans.models.User;
 import beans.services.api.UserService;
 import org.junit.After;
@@ -56,7 +57,7 @@ public class UserServiceImplTest {
     public void testRegister() throws Exception {
         String email = UUID.randomUUID().toString();
         String password = UUID.randomUUID().toString();
-        User user = new User(email, UUID.randomUUID().toString(), LocalDate.now(), password);
+        User user = new User(email, UUID.randomUUID().toString(), LocalDate.now(), password, Role.REGISTERED_USER);
         long registeredId = userService.register(user).getId();
         assertEquals("User should be the same", userService.getUserByEmail(email), user.withId(registeredId));
     }
@@ -78,7 +79,7 @@ public class UserServiceImplTest {
     public void testUsersGetByName() throws Exception {
         User testUser1 = (User) applicationContext.getBean("testUser1");
         List<User> before = userService.getUsersByName(testUser1.getName());
-        User addedUser = new User(UUID.randomUUID().toString(), testUser1.getName(), LocalDate.now(), UUID.randomUUID().toString());
+        User addedUser = new User(UUID.randomUUID().toString(), testUser1.getName(), LocalDate.now(), UUID.randomUUID().toString(), Role.REGISTERED_USER);
         long registeredId = userService.register(addedUser).getId();
         List<User> after = userService.getUsersByName(testUser1.getName());
         before.add(addedUser.withId(registeredId));

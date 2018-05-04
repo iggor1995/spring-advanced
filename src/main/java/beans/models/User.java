@@ -14,24 +14,26 @@ public class User {
     private String    email;
     private String    name;
     private String password;
+    private Role role = Role.REGISTERED_USER;
 
     public User() {
     }
 
-    public User(long id, String email, String name, LocalDate birthday, String password) {
+    public User(long id, String email, String name, LocalDate birthday, String password, Role role) {
         this.id = id;
         this.email = email;
         this.name = name;
         this.birthday = birthday;
         this.password = password;
+        this.role = role;
     }
 
-    public User(String email, String name, LocalDate birthday, String password) {
-        this(-1, email, name, birthday, password);
+    public User(String email, String name, LocalDate birthday, String password, Role role) {
+        this(-1, email, name, birthday, password, role);
     }
 
     public User withId(long id) {
-        return new User(id, email, name, birthday, password);
+        return new User(id, email, name, birthday, password, role);
     }
 
     public long getId() {
@@ -72,6 +74,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override

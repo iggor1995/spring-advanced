@@ -9,6 +9,7 @@ import beans.daos.mocks.DBAuditoriumDAOMock;
 import beans.daos.mocks.EventDAOMock;
 import beans.daos.mocks.UserDAOMock;
 import beans.models.Event;
+import beans.models.Role;
 import beans.models.Ticket;
 import beans.models.User;
 import beans.services.api.BookingService;
@@ -97,7 +98,7 @@ public class BookingServiceImplTest {
         List<Ticket> before = bookingService.getTicketsForEvent(testEvent1.getName(),
                                                                 testEvent1.getAuditorium().getName(),
                                                                 testEvent1.getDateTime());
-        User newUser = new User(UUID.randomUUID().toString(), UUID.randomUUID().toString(), LocalDate.now(), UUID.randomUUID().toString());
+        User newUser = new User(UUID.randomUUID().toString(), UUID.randomUUID().toString(), LocalDate.now(), UUID.randomUUID().toString(), Role.REGISTERED_USER);
         Ticket newTicket = new Ticket(testEvent1, LocalDateTime.now(), Arrays.asList(3, 4), newUser, 0.0);
         bookingService.bookTicket(newUser, newTicket);
     }
@@ -143,7 +144,7 @@ public class BookingServiceImplTest {
     @Test
     public void testGetTicketPrice_WithoutDiscount() throws Exception {
         Ticket ticket = (Ticket) applicationContext.getBean("testTicket1");
-        User user = userDAOMock.create(new User("dadsada", "asdasda", LocalDate.now().minus(1, ChronoUnit.DAYS), "asd"));
+        User user = userDAOMock.create(new User("dadsada", "asdasda", LocalDate.now().minus(1, ChronoUnit.DAYS), "asd", Role.REGISTERED_USER));
         Event event = ticket.getEvent();
         double ticketPrice = bookingService.getTicketPrice(event.getName(), event.getAuditorium().getName(),
                                                            event.getDateTime(), ticket.getSeatsList(), user);
@@ -153,7 +154,7 @@ public class BookingServiceImplTest {
     @Test
     public void testGetTicketPrice_DiscountsForTicketsAndForBirthday() throws Exception {
         Ticket ticket = (Ticket) applicationContext.getBean("testTicket1");
-        User testUser = new User(UUID.randomUUID().toString(), UUID.randomUUID().toString(), LocalDate.now(), UUID.randomUUID().toString());
+        User testUser = new User(UUID.randomUUID().toString(), UUID.randomUUID().toString(), LocalDate.now(), UUID.randomUUID().toString(), Role.REGISTERED_USER);
         User registeredUser = userDAOMock.create(testUser);
         bookingService.bookTicket(registeredUser,
                                   new Ticket(ticket.getEvent(), LocalDateTime.now(), Collections.singletonList(1),
@@ -171,7 +172,7 @@ public class BookingServiceImplTest {
     @Test
     public void testGetTicketPrice_DiscountsForTicketsAndForBirthday_MidRate() throws Exception {
         Ticket ticket = (Ticket) applicationContext.getBean("testTicket2");
-        User testUser = new User(UUID.randomUUID().toString(), UUID.randomUUID().toString(), LocalDate.now(), UUID.randomUUID().toString());
+        User testUser = new User(UUID.randomUUID().toString(), UUID.randomUUID().toString(), LocalDate.now(), UUID.randomUUID().toString(), Role.REGISTERED_USER);
         User registeredUser = userDAOMock.create(testUser);
         bookingService.bookTicket(registeredUser,
                                   new Ticket(ticket.getEvent(), LocalDateTime.now(), Collections.singletonList(3),

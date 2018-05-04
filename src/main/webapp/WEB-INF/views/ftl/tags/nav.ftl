@@ -27,25 +27,31 @@
 <body>
 <#--NAVBAR-->
 <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse" id="mainNav">
-    <div class="container">
-        <form name="showUsers" action="home" method="get" >
-            <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
-                Home</button>
-        </form>
-        <li class="nav-item">
+    <div class="container align-items-center">
+        <li class="nav-item" >
+            <form name="showUsers" action="home" method="get" >
+                <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
+                    Home</button>
+            </form>
+        </li>
+        <li class="nav-item" >
             <a class="btn btn-primary" data-toggle="modal" href="#myModal" style="background-color: #9fcdff">Login</a>
         </li>
         <li class="nav-item">
             <a class="btn btn-primary" data-toggle="modal" href="#myRegisterModal" style="background-color: #9fcdff">Register</a>
         </li>
-        <form name="showUsers" action="getUsers" method="get">
-            <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
-                See all users</button><br/>
-        </form>
-        <form name="showUsers" action="pageAddEvent" method="get" >
-            <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
-                Add event</button>
-        </form>
+        <li class="nav-item">
+            <form name="showUsers" action="getUsers" method="get">
+                <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
+                    See all users</button><br/>
+            </form>
+        </li>
+        <li class="nav-item">
+            <form name="showUsers" action="pageAddEvent" method="get" >
+                <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
+                    Add event</button>
+            </form>
+         </li>
         <#if Session.registeredUser??>
             <form name="logout" action="logout" method="get">
                 <button type="submit" class="btn btn-primary" style="background-color: aliceblue">
@@ -59,8 +65,6 @@
 <#if Session.registeredUser??><#else>
 <div class="container" align="center">
     <div class="row">
-    <#--<a class="btn btn-primary" data-toggle="modal" href="#myModal" >Login</a>-->
-
         <div class="modal hide" id="myModal">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">x</button>
@@ -70,9 +74,7 @@
                 <form method="post" action='login' name="login_form">
                     <p><input type="text" class="span3" name="email" placeholder="Email"></p>
                     <p><input type="password" class="span3" name="password" placeholder="Password"></p>
-                    <p><button type="submit" class="btn btn-primary">Sign in</button>
-                        <a href="#">Forgot Password?</a>
-                    </p>
+                    <p><button type="submit" class="btn btn-primary">Sign in</button>                  </p>
                 </form>
             </div>
             <div class="modal-footer">
@@ -133,10 +135,6 @@
                     <p><input type="date" class="span3" name="birthday" value="2000-01-01"></p>
                     <p><button type="submit" class="btn btn-primary">Register</button></p>
                 </form>
-            </div>
-            <div class="modal-footer">
-                Do you have Login?
-                <a class="btn btn-primary" data-toggle="modal" href="#myModal" >Login</a>
             </div>
         </div>
     </div>

@@ -1,23 +1,44 @@
 [
   {
-    "name"  : "SpiderMan 8",
-    "rate"  : "HIGH",
-    "basePrice"  : 500,
-    "dateTime"   : "2018-06-02 08:30",
-    "auditorium"   : 1
+    "name"        : "SpiderMan 8",
+    "rate"        : "HIGH",
+    "basePrice"   : 500,
+    "dateTime"    : "2018-06-02 08:30",
+    "auditorium"  : 1
   },
   {
-    "name"  : "Tomb Raider",
-    "rate"  : "HIGH",
-    "basePrice"  : 600,
-    "dateTime"   : "2018-08-02 09:30",
-    "auditorium"   : 2
+    "name"        : "Tomb Raider",
+    "rate"        : "HIGH",
+    "basePrice"   : 600,
+    "dateTime"    : "2018-08-02 09:30",
+    "auditorium"  : 2
   },
   {
-    "name"  : "Man",
-    "rate"  : "HIGH",
-    "basePrice"  : 300,
-    "dateTime"   : "2018-07-02 01:30",
-	  "auditorium"   : 3
+    "name"        : "Man",
+    "rate"        : "HIGH",
+    "basePrice"   : 300,
+    "dateTime"    : "2018-07-02 01:30",
+    "auditorium"  : 3
+  },
+  {
+    "name"        : "Super Man",
+    "rate"        : "MID",
+    "basePrice"   : 400,
+    "dateTime"    : "2018-07-10 01:30",
+    "auditorium"  : 3
+  },
+  {
+    "name"        : "Hell",
+    "rate"        : "HIGH",
+    "basePrice"   : 550,
+    "dateTime"    : "2018-09-02 01:30",
+    "auditorium"  : 2
+  },
+  {
+    "name"        : "Solstice",
+    "rate"        : "LOW",
+    "basePrice"   : 900,
+    "dateTime"    : "2018-10-02 02:30",
+    "auditorium"  : 1
   }
 ]
