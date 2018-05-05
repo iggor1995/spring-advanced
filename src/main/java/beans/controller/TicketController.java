@@ -67,10 +67,10 @@ public class TicketController {
         return "bookTickets";
     }
     @RequestMapping(value = "/user/bookTickets", method = RequestMethod.POST)
-    public String createAndBookTicket(@RequestParam("eventId") String eventId, @RequestParam("userId") String userId,
+    public String createAndBookTicket(@RequestParam("eventId") String eventId, @RequestParam("userEmail") String userEmail,
                                       @RequestParam("seat") Integer seat) throws ServiceException, DaoException {
         Event event = eventService.getById(Long.valueOf(eventId));
-        User user = userService.getById(Long.valueOf(userId));
+        User user = userService.getUserByEmail(userEmail);
         List<Integer> seatsList = new ArrayList<>();
         seatsList.add(seat);
         Ticket ticket = new Ticket(event, event.getDateTime(), seatsList, user, event.getBasePrice());

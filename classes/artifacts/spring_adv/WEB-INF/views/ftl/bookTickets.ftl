@@ -1,10 +1,7 @@
 <#import "tags/nav.ftl" as u>
+<#assign  security=JspTaglibs["http://www.springframework.org/security/tags"] />
 <html>
-<head><title> Home </title>
-    <property name="exposeSessionAttributes"><value>true</value></property>
-
 <body>
-<div id="header">
 <@u.page/>
 <div id="content">
     <br/>
@@ -25,10 +22,12 @@
             <td>${event.rate}</td>
             <td>${event.basePrice}</td>
             <td>${event.dateTime}</td>
-                <#if Session.registeredUser??>
-                    <form name="PDF" action="bookTickets" method="post">
+            <@security.authorize  access="hasRole('ROLE_REGISTERED_USER')">
+                <@security.authentication property="principal.name"
+                var="email" scope="page" />
+                    <form name="book" action="/spring_adv/user/bookTickets" method="post">
+                        <input type="hidden" name="userEmail" value="${.globals.email}">
                         <input type="hidden" name="eventId" value="${event.id}">
-                        <input type="hidden" name="userId" value="${Session.registeredUser.id}">
                         <td>
                             <select name="seat">
                                 <#assign x=.data_model["seats"]>
@@ -41,7 +40,7 @@
                             <button type="submit" class="btn btn-primary">Book ticket</button>
                         </td>
                     </form>
-                </#if>
+            </@security.authorize>
             </td>
         </tr>
     </table>

@@ -47,7 +47,7 @@
                     See all users</button><br/>
             </form>
         </li>
-        <@security.authorize  access="hasAnyRole('ROLE_REGISTERED_USER')">
+        <@security.authorize  access="hasRole('ROLE_BOOKING_MANAGER')">
             <li class="nav-item">
                 <form name="showUsers" action="manager/pageAddEvent" method="get" >
                     <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">

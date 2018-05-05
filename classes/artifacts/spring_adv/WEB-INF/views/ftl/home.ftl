@@ -1,4 +1,5 @@
 <#import "tags/nav.ftl" as u>
+<#assign  security=JspTaglibs["http://www.springframework.org/security/tags"] />
 <html>
 <style>
     body {
@@ -33,12 +34,12 @@
             <td>${event.basePrice}</td>
             <td>${event.dateTime}</td>
             <td>
-                <#if Session.registeredUser??>
+            <@security.authorize  access="hasRole('ROLE_REGISTERED_USER')">
                     <form name="booking" action="user/bookTicketsPage" method="post">
                         <input type="hidden" name="eventId" value=${event.id}><br/>
                         <button type="submit" class="btn btn-primary">Book ticket</button>
                     </form>
-                </#if>
+            </@security.authorize>
             </td>
         </tr>
         </#list>
@@ -54,21 +55,31 @@
 
 <#--UPLOAD-->
     <div class="row align-items-center justify-content-center" >
-        <div class="span6" style="background-color: #9fcdff; border: 2px solid deepskyblue" align="center" >
-                <form method="post" action="eventsUpload" enctype="multipart/form-data">
-                    <h2 class="form-signin-heading">Upload events</h2>
-                    <input type="file" name="file"/>
-                    <button type="submit" class="btn btn-primary">Load events</button>
-                </form>
-        </div>
-        <div class="span6" style="background-color: #9fcdff; border: 2px solid deepskyblue" align="center">
+        <@security.authorize  access="hasRole('ROLE_BOOKING_MANAGER')">
+            <div class="span6" style="background-color: #9fcdff; border: 2px solid deepskyblue" align="center" >
+                    <form method="post" action="eventsUpload" enctype="multipart/form-data">
+                        <h2 class="form-signin-heading">Upload events</h2>
+                        <input type="file" name="file"/>
+                        <button type="submit" class="btn btn-primary">Load events</button>
+                    </form>
+            </div>
+        </@security.authorize>
+            <div class="span6" style="background-color: #9fcdff; border: 2px solid deepskyblue" align="center">
                 <form method="post" action="usersUpload" enctype="multipart/form-data">
                     <h2 class="form-signin-heading">Upload users</h2>
                     <input type="file" name="file"/>
                     <button type="submit" class="btn btn-primary">Load users</button>
                 </form>
-        </div>
+            </div>
     </div>
 <#--/UPLOAD-->
+
+<div class="row align-items-center justify-content-center" >
+<@security.authorize  access="hasRole('ROLE_BOOKING_MANAGER')">
+        <form method="post" action="manager/report" name="PDF">
+            <button type="submit" class="btn btn-primary">Get tickets [PDF]</button>
+        </form>
+</@security.authorize>
+</div>
 </body>
 </html>
