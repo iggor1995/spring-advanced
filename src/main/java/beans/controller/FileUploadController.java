@@ -7,7 +7,9 @@ import beans.services.api.UserService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,6 +34,9 @@ public class FileUploadController {
     @Qualifier("eventServiceImpl")
     EventService eventService;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @RequestMapping(value = "/usersUpload", method = RequestMethod.POST)
     public String uploadUsersJson(@RequestParam("file") MultipartFile file){
         if (!file.isEmpty()) {
@@ -43,7 +48,13 @@ public class FileUploadController {
                 TypeReference<List<User>> mapType = new TypeReference<List<User>>() {};
                 List<User> jsonToPersonList = mapper.readValue(bis, mapType);
                 for(User user : jsonToPersonList){
-                    userService.register(user);
+                    try {
+                        user.setPassword(passwordEncoder.encode(user.getPassword()));
+                        userService.register(user);
+                    }
+                    catch (Exception e) {
+                        continue;
+                    }
                 }
                 return "redirect:getUsers";
             } catch (Exception e) {

@@ -65,7 +65,6 @@
 </nav>
 <#--/NAVBAR-->
 <#--LOGIN-->
-<#if Session.registeredUser??><#else>
 <div class="container" align="center">
     <div class="row">
         <div class="modal hide" id="myModal">
@@ -87,7 +86,6 @@
         </div>
     </div>
 </div>
-</#if>
 <#--/LOGIN-->
 
 <#--CAROUSEL-->
