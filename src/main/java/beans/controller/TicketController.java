@@ -49,7 +49,7 @@ public class TicketController {
     @Qualifier("auditoriumServiceImpl")
     AuditoriumService auditoriumService;
 
-    @RequestMapping(value = "/getTickets", method = RequestMethod.POST)
+    @RequestMapping(value = "/manager/getTickets", method = RequestMethod.POST)
     public String getTickets(@RequestParam("eventName") String event, @RequestParam("auditorium") String auditorium,
                              @RequestParam("date")LocalDateTime dateTime, @ModelAttribute("model")Model model){
         List<Ticket> tickets = bookingService.getTicketsForEvent(event, auditorium, dateTime);
@@ -57,7 +57,7 @@ public class TicketController {
         return "redirect:/home";
     }
 
-    @RequestMapping(value = "/bookTicketsPage", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/bookTicketsPage", method = RequestMethod.POST)
     public String bookTickets(@RequestParam("eventId") String eventId, Model model){
 
         Event event = eventService.getById(Long.valueOf(eventId));
@@ -66,7 +66,7 @@ public class TicketController {
         model.addAttribute("seats", seats);
         return "bookTickets";
     }
-    @RequestMapping(value = "/bookTickets", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/bookTickets", method = RequestMethod.POST)
     public String createAndBookTicket(@RequestParam("eventId") String eventId, @RequestParam("userId") String userId,
                                       @RequestParam("seat") Integer seat) throws ServiceException, DaoException {
         Event event = eventService.getById(Long.valueOf(eventId));

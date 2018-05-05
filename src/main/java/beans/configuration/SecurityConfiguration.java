@@ -1,6 +1,5 @@
 package beans.configuration;
 
-import beans.services.api.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +8,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 import javax.annotation.Resource;
 
@@ -24,19 +24,41 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Qualifier("userDetailsServiceImpl")
     private UserDetailsService userDetailsService;
 
+
+    @SuppressWarnings("deprecation")
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    public static NoOpPasswordEncoder passwordEncoder() {
+        return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
     }
 
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailsService);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.
+        http
+                .authorizeRequests()
+                .antMatchers("/**").permitAll()
+                .antMatchers("/user/**").hasAnyRole("ROLE_REGISTERED_USER")
+                .antMatchers("manager/**").hasAnyRole("ROLE_BOOKING_MANAGER")
+                .and()
+                .formLogin()
+                .loginPage("/loginPage")
+                .loginProcessingUrl("/login")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                //.successForwardUrl("redirect:/home")
+                .and()
+                .logout()
+                .logoutUrl("/logout").permitAll()
+                .logoutSuccessUrl("/home")
+                .invalidateHttpSession(true)
+                .and()
+                .httpBasic()
+                .and()
+                .csrf().disable();
     }
 }

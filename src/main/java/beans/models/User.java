@@ -14,7 +14,7 @@ public class User {
     private String    email;
     private String    name;
     private String password;
-    private Role role = Role.REGISTERED_USER;
+    private Role role = Role.ROLE_REGISTERED_USER;
 
     public User() {
     }

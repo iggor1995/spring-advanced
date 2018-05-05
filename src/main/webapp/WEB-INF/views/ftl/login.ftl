@@ -6,7 +6,7 @@
 <#--LOGIN-->
 <#if Session.registeredUser??>You are already Logged in<#else>
 <div class="container-fluid" align="center">
-    <legend>Add Movie</legend>
+    <legend>Log in</legend>
     <form name="login" action="login" method="post">
         <div class="form-group" align="left">
             <label for="email">Name</label>

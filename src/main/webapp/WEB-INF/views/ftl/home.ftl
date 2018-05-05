@@ -34,7 +34,7 @@
             <td>${event.dateTime}</td>
             <td>
                 <#if Session.registeredUser??>
-                    <form name="booking" action="bookTicketsPage" method="post">
+                    <form name="booking" action="user/bookTicketsPage" method="post">
                         <input type="hidden" name="eventId" value=${event.id}><br/>
                         <button type="submit" class="btn btn-primary">Book ticket</button>
                     </form>

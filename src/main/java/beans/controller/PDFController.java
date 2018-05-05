@@ -26,7 +26,7 @@ public class PDFController {
     @Qualifier("bookingServiceImpl")
     BookingService bookingService;
 
-    @RequestMapping(value = "/report", method = RequestMethod.POST)
+    @RequestMapping(value = "/manager/report", method = RequestMethod.POST)
     public String handleAllTradesRequests (Model model) {
         List<Ticket> tickets = bookingService.getAllTickets();
 

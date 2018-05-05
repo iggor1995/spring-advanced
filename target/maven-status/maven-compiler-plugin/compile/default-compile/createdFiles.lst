@@ -13,7 +13,6 @@ beans\configuration\db\DataSourceConfiguration.class
 beans\models\Role.class
 beans\daos\db\AuditoriumDAOImpl.class
 beans\controller\FileUploadController.class
-beans\services\api\UserDetailsService.class
 beans\configuration\SecurityConfiguration.class
 beans\daos\inmemory\InMemoryBookingDAO.class
 beans\daos\inmemory\InMemoryAuditoriumDAO.class

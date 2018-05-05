@@ -15,12 +15,12 @@ public class TestUserServiceConfiguration {
 
     @Bean
     public User testUser1() {
-        return new User(0, "dmitriy.vbabichev@gmail.com", "Dmytro Babichev", java.time.LocalDate.of(1992, 4, 29), "asd", Role.REGISTERED_USER);
+        return new User(0, "dmitriy.vbabichev@gmail.com", "Dmytro Babichev", java.time.LocalDate.of(1992, 4, 29), "asd", Role.ROLE_REGISTERED_USER);
     }
 
     @Bean
     public User testUser2() {
-        return new User(1, "laory@yandex.ru", "Dmytro Babichev", java.time.LocalDate.of(1992, 4, 29), "asd", Role.REGISTERED_USER);
+        return new User(1, "laory@yandex.ru", "Dmytro Babichev", java.time.LocalDate.of(1992, 4, 29), "asd", Role.ROLE_REGISTERED_USER);
     }
 
     @Bean

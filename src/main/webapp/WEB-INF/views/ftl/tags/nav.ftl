@@ -1,4 +1,5 @@
 <#macro page>
+<#assign  security=JspTaglibs["http://www.springframework.org/security/tags"] />
 <html>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -29,7 +30,7 @@
 <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse" id="mainNav">
     <div class="container align-items-center">
         <li class="nav-item" >
-            <form name="showUsers" action="home" method="get" >
+            <form name="showUsers" action="/spring_adv/home" method="get" >
                 <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
                     Home</button>
             </form>
@@ -41,23 +42,25 @@
             <a class="btn btn-primary" data-toggle="modal" href="#myRegisterModal" style="background-color: #9fcdff">Register</a>
         </li>
         <li class="nav-item">
-            <form name="showUsers" action="getUsers" method="get">
+            <form name="showUsers" action="/spring_adv/getUsers" method="get">
                 <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
                     See all users</button><br/>
             </form>
         </li>
-        <li class="nav-item">
-            <form name="showUsers" action="pageAddEvent" method="get" >
-                <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
-                    Add event</button>
-            </form>
-         </li>
-        <#if Session.registeredUser??>
-            <form name="logout" action="logout" method="get">
-                <button type="submit" class="btn btn-primary" style="background-color: aliceblue">
+        <@security.authorize  access="hasRole('ROLE_REGISTERED_USER')">
+            <li class="nav-item">
+                <form name="showUsers" action="manager/pageAddEvent" method="get" >
+                    <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
+                        Add event</button>
+                </form>
+             </li>
+        </@security.authorize>
+        <@security.authorize  access="isAuthenticated()">
+            <form name="logout" action="/spring_adv/logout" method="get">
+                <button type="submit" class="btn btn-primary" style="background-color: palevioletred">
                     Logout</button>
             </form>
-        </#if>
+        </@security.authorize>
     </div>
 </nav>
 <#--/NAVBAR-->
