@@ -19,6 +19,7 @@
     <aop:aspectj-autoproxy/>
     <mvc:annotation-driven conversion-service="conversionService"/>
     <mvc:resources mapping="/resources/**" location="/resources/" />
+
     <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
         <property name="converters">
             <set>

@@ -14,8 +14,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
         integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
         crossorigin="anonymous"></script>
-<head>
-</head>
 <style>
     body {
         padding-top: 100px;
@@ -56,10 +54,12 @@
              </li>
         </@security.authorize>
         <@security.authorize  access="isAuthenticated()">
-            <form name="logout" action="/spring_adv/logout" method="get">
-                <button type="submit" class="btn btn-primary" style="background-color: palevioletred">
-                    Logout</button>
-            </form>
+            <li class="nav-item">
+                <form name="logout" action="/spring_adv/logout" method="get">
+                    <button type="submit" class="btn btn-primary" style="background-color: palevioletred">
+                        Logout</button>
+                </form>
+            </li>
         </@security.authorize>
     </div>
 </nav>
