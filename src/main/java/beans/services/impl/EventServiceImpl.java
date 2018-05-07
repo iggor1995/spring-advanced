@@ -25,6 +25,7 @@ public class EventServiceImpl implements EventService {
     }
 
     public Event create(Event event) throws DaoException {
+
         return eventDAO.create(event);
     }
 

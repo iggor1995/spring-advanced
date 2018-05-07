@@ -48,7 +48,9 @@
 </#if>
 </div>
 <#--/TABLE-->
-
+<#if model["error"]??>
+    <h2>${model["error"]}</h2>
+</#if>
 <div style="background-color:#9fcdff;color:white;padding:20px;">
     <p>If there is no data - upload files events.json and users.json from: /resources/json </p>
 </div><br/>

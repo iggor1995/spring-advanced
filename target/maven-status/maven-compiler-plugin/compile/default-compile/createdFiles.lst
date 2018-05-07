@@ -1,5 +1,6 @@
 beans\services\api\UserService.class
 beans\configuration\SpringWebConfig.class
+beans\controller\ControllerException.class
 beans\controller\MainController.class
 beans\models\Event.class
 beans\controller\ExceptionHandlerController.class

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
@@ -25,10 +26,15 @@ public class UserController {
     PasswordEncoder passwordEncoder;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@ModelAttribute("user") User user, HttpServletRequest request) throws DaoException {
+    public String register(@ModelAttribute("user") User user, @ModelAttribute("model")ModelMap model)  {
         if(null != user){
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-            userService.register(user);
+            try {
+                userService.register(user);
+            } catch (DaoException e) {
+                model.addAttribute("error", "User with such email already exists");
+                return "register";
+            }
         }
         return "redirect:/home";
     }

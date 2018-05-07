@@ -1,25 +1,35 @@
+<#import "tags/nav.ftl" as u>
 <html>
-<head><title> Registeration</title>
+<title> Registration</title>
 
 <body>
-<div id="header">
-    <H2>
-        FreeMarker Spring MVC Cinema
-    </H2>
-</div>
+<@u.page/>
 
 <div id="content">
-
-    <fieldset>
-        <legend>Add User</legend>
-        <form name="user" action="register" method="post">
-            Name : <input type="text" name="name" /> <br/>
-            Email :  <input type="text" name="email" /> <br/>
-            Password :  <input type="password" name="password" /> <br/>
-            Birthday : <input type="date" name="birthday" value="2000-01-01"/> <br/>
+<#if  model["error"]?has_content>
+    <h2>${model["error"]}</h2>
+</#if>
+    <div class="row align-items-center justify-content-center" >
+        <form name="user" action="register" method="post" style="background-color: deepskyblue">
+            <legend>Add User</legend>
+            <div class="form-group" align="left">
+                <label for="name">Name</label>
+                <input id="name" type="text" name="name" />
+            </div>
+            <div class="form-group" align="left">
+                <label for="email">Email</label>
+                <input id="email" type="text" name="email" />
+            </div>
+            <div class="form-group" align="left">
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" />
+            </div>
+            <div class="form-group" align="left">
+                <label for="date">Birth date</label>
+                <input id="date" type="date" name="birthday" value="2000-01-01"/> <br/>
             <input type="submit" value="   Register   " />
         </form>
-    </fieldset>
+    </div>
 </div>
 </body>
 </html>

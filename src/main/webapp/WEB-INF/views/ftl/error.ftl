@@ -1,22 +1,11 @@
 <#import "tags/nav.ftl" as u>
 <html>
-<head><title> Home </title>
-    <property name="exposeSessionAttributes"><value>true</value></property>
+<head><title> error XXX </title>
 <body>
 <@u.page/>
-Error
-Error
-Error
-Error
-Error
-Error
-Error
-Error
-Error
-Error
-Error
-Error
-Error
-${.data_model["exception"]}
+<img class="d-block w-100" src= "/spring_adv/resources/images/fatalError.jpg" width="600"
+     height="300" alt="Error"><br/>
+
+<h2>${.data_model["exception"]}</h2>
 </body>
 </html>

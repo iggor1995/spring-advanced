@@ -1,7 +1,9 @@
 package beans.controller;
 
+import beans.daos.DaoException;
 import beans.models.Event;
 import beans.models.User;
+import beans.services.ServiceException;
 import beans.services.api.EventService;
 import beans.services.api.UserService;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -18,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -37,6 +40,17 @@ public class FileUploadController {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    private void parseUsersListToDB(List<User> usersList){
+        for(User user : usersList){
+            try {
+                user.setPassword(passwordEncoder.encode(user.getPassword()));
+                userService.register(user);
+            }
+            catch (Exception e) {
+                continue;
+            }
+        }
+    }
     @RequestMapping(value = "/usersUpload", method = RequestMethod.POST)
     public String uploadUsersJson(@RequestParam("file") MultipartFile file){
         if (!file.isEmpty()) {
@@ -47,15 +61,7 @@ public class FileUploadController {
                 mapper.enable(SerializationFeature.INDENT_OUTPUT);
                 TypeReference<List<User>> mapType = new TypeReference<List<User>>() {};
                 List<User> jsonToPersonList = mapper.readValue(bis, mapType);
-                for(User user : jsonToPersonList){
-                    try {
-                        user.setPassword(passwordEncoder.encode(user.getPassword()));
-                        userService.register(user);
-                    }
-                    catch (Exception e) {
-                        continue;
-                    }
-                }
+                parseUsersListToDB(jsonToPersonList);
                 return "redirect:getUsers";
             } catch (Exception e) {
                 return "redirect:getUsers";
@@ -74,16 +80,24 @@ public class FileUploadController {
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.enable(SerializationFeature.INDENT_OUTPUT);
                 TypeReference<List<Event>> mapType = new TypeReference<List<Event>>() {};
-                List<Event> jsonToPersonList = mapper.readValue(bis, mapType);
-                for(Event event : jsonToPersonList){
-                    eventService.create(event);
-                }
+                List<Event> jsonToEventList = mapper.readValue(bis, mapType);
+                parseEventsToDb(jsonToEventList);
                 return "redirect:home";
             } catch (Exception e) {
                 return "redirect:home";
             }
         } else {
             return "redirect:home";
+        }
+    }
+
+    private void parseEventsToDb(List<Event> events){
+        for(Event event : events){
+            try {
+                eventService.create(event);
+            } catch (DaoException e){
+                continue;
+            }
         }
     }
 }

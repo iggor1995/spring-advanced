@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -68,13 +69,18 @@ public class TicketController {
     }
     @RequestMapping(value = "/user/bookTickets", method = RequestMethod.POST)
     public String createAndBookTicket(@RequestParam("eventId") String eventId, @RequestParam("userEmail") String userEmail,
-                                      @RequestParam("seat") Integer seat) throws ServiceException, DaoException {
+                                      @RequestParam("seat") Integer seat, @ModelAttribute("model") ModelMap model) throws ServiceException, DaoException {
         Event event = eventService.getById(Long.valueOf(eventId));
         User user = userService.getUserByEmail(userEmail);
         List<Integer> seatsList = new ArrayList<>();
         seatsList.add(seat);
         Ticket ticket = new Ticket(event, event.getDateTime(), seatsList, user, event.getBasePrice());
-        bookingService.bookTicket(user, ticket);
+        try {
+            bookingService.bookTicket(user, ticket);
+        } catch (ServiceException e){
+            model.addAttribute("error", "seat is already booked");
+            return "home";
+        }
         return "redirect:/home";
     }
 }
