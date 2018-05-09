@@ -136,6 +136,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
+    @Transactional(rollbackFor = ServiceException.class)
     public Ticket bookTicket(User user, Ticket ticket) throws ServiceException, DaoException {
             if(validate(user, ticket)){
                 userService.updateUserAccount(new UserAccount(user.getId(),

@@ -6,6 +6,7 @@ import beans.daos.UserDAO;
 import beans.models.Ticket;
 import beans.models.User;
 import beans.models.UserAccount;
+import beans.services.ServiceException;
 import beans.services.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -33,10 +34,15 @@ public class UserServiceImpl implements UserService {
         return userDAO.getAll();
     }
 
-    public User register(User user) throws DaoException {
-        User createdUser = userDAO.create(user);
-        userAccountDAO.create(new UserAccount(createdUser.getId(), 3000));
-        return createdUser;
+    @Transactional(rollbackFor = Exception.class)
+    public User register(User user) throws ServiceException {
+        try {
+            User createdUser = userDAO.create(user);
+            userAccountDAO.create(new UserAccount(createdUser.getId(), 3000));
+            return createdUser;
+        } catch (DaoException e) {
+            throw new ServiceException("Couldn't store user");
+        }
     }
 
     public void remove(User user) {

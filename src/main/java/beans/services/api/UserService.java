@@ -4,6 +4,7 @@ import beans.daos.DaoException;
 import beans.models.Ticket;
 import beans.models.User;
 import beans.models.UserAccount;
+import beans.services.ServiceException;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface UserService {
 
     List<User> getAllUsers();
 
-    User register(User user) throws DaoException;
+    User register(User user) throws ServiceException;
 
     void remove(User user);
 

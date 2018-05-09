@@ -2,6 +2,7 @@ package beans.controller;
 
 import beans.daos.DaoException;
 import beans.models.User;
+import beans.services.ServiceException;
 import beans.services.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -26,12 +27,12 @@ public class UserController {
     PasswordEncoder passwordEncoder;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@ModelAttribute("user") User user, @ModelAttribute("model")ModelMap model)  {
+    public String register(@ModelAttribute("user") User user, @ModelAttribute("model")ModelMap model) throws ServiceException {
         if(null != user){
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             try {
                 userService.register(user);
-            } catch (DaoException e) {
+            } catch (ServiceException e) {
                 model.addAttribute("error", "User with such email already exists");
                 return "register";
             }
