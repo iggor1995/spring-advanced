@@ -20,6 +20,7 @@ C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\controller\UserC
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\controller\MainController.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\api\DiscountService.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\Auditorium.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\UserAccountDao.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\impl\EventServiceImpl.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\SpringWebConfig.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\SecurityConfiguration.java
@@ -31,6 +32,7 @@ C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\controller\Ticke
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\db\EventDAOImpl.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\UserDAO.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\Ticket.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\db\UserAccountDaoImpl.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\aspects\LuckyWinnerAspect.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\Main.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\WebConfiguration.java
@@ -62,5 +64,6 @@ C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\controller\PDFCo
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\controller\ControllerException.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\DaoException.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\api\UserService.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\UserAccount.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\api\EventService.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\AppConfiguration.java

@@ -1,5 +1,6 @@
 package beans.configuration;
 
+import beans.daos.mocks.UserAccountDaoMock;
 import beans.daos.mocks.UserDAOMock;
 import beans.models.Role;
 import beans.models.User;
@@ -27,9 +28,14 @@ public class TestUserServiceConfiguration {
     public UserDAOMock userDAO() {
         return new UserDAOMock(Arrays.asList(testUser1(), testUser2()));
     }
+    @Bean
+    public UserAccountDaoMock userAccountDAO() {
+        return new UserAccountDaoMock(Arrays.asList(testUser1(), testUser2()));
+    }
+
 
     @Bean(name = "testUserServiceImpl")
     public UserService userServiceImpl() {
-        return new UserServiceImpl(userDAO());
+        return new UserServiceImpl(userDAO(), userAccountDAO());
     }
 }

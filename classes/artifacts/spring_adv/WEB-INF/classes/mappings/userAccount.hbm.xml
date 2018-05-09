@@ -12,18 +12,9 @@
 
 <hibernate-mapping package="beans.models">
 
-    <class name="Authority" table="AUTHORITY">
-        <id name="id" column="ID">
-            <generator class="identity"/>
-        </id>
-        <property name="email" column="USER_EMAIL" type="string" unique="true"/>
-        <property name="role" column="ROLE">
-            <type name="org.hibernate.type.EnumType">
-                <param name="enumClass">beans.models.Role</param>
-                <param name="useNamed">true</param>
-            </type>
-        </property>
-
+    <class name="UserAccount" table="ACCOUNT">
+        <id name="userId" column="USER_ID"/>
+        <property name="cash" column="CASH" type="double"/>
     </class>
 
 </hibernate-mapping>

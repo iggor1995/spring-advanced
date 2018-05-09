@@ -33,12 +33,14 @@
                     Home</button>
             </form>
         </li>
-        <li class="nav-item" >
-            <a class="btn btn-primary" data-toggle="modal" href="#myModal" style="background-color: #9fcdff">Login</a>
-        </li>
-        <li class="nav-item">
-            <a class="btn btn-primary" data-toggle="modal" href="#myRegisterModal" style="background-color: #9fcdff">Register</a>
-        </li>
+        <@security.authorize access="!isAuthenticated()">
+            <li class="nav-item" >
+                <a class="btn btn-primary" data-toggle="modal" href="#myModal" style="background-color: #9fcdff">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary" data-toggle="modal" href="#myRegisterModal" style="background-color: #9fcdff">Register</a>
+            </li>
+        </@security.authorize>
         <li class="nav-item">
             <form name="showUsers" action="/spring_adv/getUsers" method="get">
                 <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
@@ -60,6 +62,9 @@
                         Logout</button>
                 </form>
             </li>
+        <li class="nav-item">
+            <h2></h2>
+        </li>
         </@security.authorize>
     </div>
 </nav>

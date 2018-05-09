@@ -3,10 +3,15 @@ package beans.services.api;
 import beans.daos.DaoException;
 import beans.models.Ticket;
 import beans.models.User;
+import beans.models.UserAccount;
 
 import java.util.List;
 
 public interface UserService {
+
+    void updateUserAccount(UserAccount userAccount);
+
+    double getUserCash(User user);
 
     List<User> getAllUsers();
 

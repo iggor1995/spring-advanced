@@ -2,6 +2,7 @@ beans\aspects\TestDiscountAspect$1.class
 beans\aspects\TestCounterAspect$2.class
 beans\configuration\TestAuditoriumConfiguration.class
 beans\daos\mocks\EventDAOMock.class
+beans\daos\mocks\UserAccountDaoMock.class
 beans\services\AuditoriumServiceImplTest.class
 beans\aspects\mocks\DiscountAspectMock.class
 beans\daos\mocks\DBAuditoriumDAOMock.class

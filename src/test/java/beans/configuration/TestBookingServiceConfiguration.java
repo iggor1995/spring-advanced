@@ -1,9 +1,6 @@
 package beans.configuration;
 
-import beans.daos.AuditoriumDAO;
-import beans.daos.BookingDAO;
-import beans.daos.EventDAO;
-import beans.daos.UserDAO;
+import beans.daos.*;
 import beans.daos.mocks.*;
 import beans.models.*;
 import beans.services.api.*;
@@ -128,10 +125,14 @@ public class TestBookingServiceConfiguration {
     public UserDAO userDAOMock() {
         return new UserDAOMock(Arrays.asList(testUser1()));
     }
+    @Bean
+    public UserAccountDao userAccountDAOMock() {
+        return new UserAccountDaoMock(Arrays.asList(testUser1()));
+    }
 
     @Bean
     public UserService userServiceImpl() {
-        return new UserServiceImpl(userDAOMock());
+        return new UserServiceImpl(userDAOMock(), userAccountDAOMock());
     }
 
     @Bean(name = "testBookingServiceImpl")

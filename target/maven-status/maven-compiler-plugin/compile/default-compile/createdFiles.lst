@@ -4,6 +4,7 @@ beans\controller\ControllerException.class
 beans\controller\MainController.class
 beans\models\Event.class
 beans\controller\ExceptionHandlerController.class
+beans\daos\UserAccountDao.class
 beans\models\Booking.class
 beans\daos\db\UserDAOImpl.class
 beans\models\deserializer\LocalDateDeserializer.class
@@ -27,6 +28,7 @@ beans\aspects\CounterAspect.class
 beans\controller\PDFController.class
 beans\daos\db\BookingDAOImpl.class
 beans\daos\EventDAO.class
+beans\daos\db\UserAccountDaoImpl.class
 beans\services\impl\BookingServiceImpl.class
 beans\configuration\db\DbSessionFactory.class
 beans\services\impl\UserServiceImpl.class
@@ -64,6 +66,7 @@ beans\services\api\EventService.class
 beans\aspects\LuckyWinnerAspect.class
 beans\aspects\DiscountAspect.class
 beans\configuration\AppConfiguration.class
+beans\models\UserAccount.class
 beans\controller\FileUploadController$2.class
 beans\configuration\StrategiesConfiguration.class
 util\CsvUtil.class

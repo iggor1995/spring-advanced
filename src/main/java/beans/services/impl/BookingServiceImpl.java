@@ -2,6 +2,7 @@ package beans.services.impl;
 
 import beans.daos.BookingDAO;
 import beans.daos.DaoException;
+import beans.daos.UserAccountDao;
 import beans.models.*;
 import beans.services.ServiceException;
 import beans.services.api.*;
@@ -23,10 +24,11 @@ import java.util.stream.Collectors;
 @Transactional
 public class BookingServiceImpl implements BookingService {
 
+    private String error;
     private final EventService eventService;
     private final AuditoriumService auditoriumService;
     private final UserService userService;
-    private final BookingDAO        bookingDAO;
+    private final BookingDAO bookingDAO;
     private final DiscountService discountService;
     final         int               minSeatNumber;
     final         double            vipSeatPriceMultiplier;
@@ -135,6 +137,26 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public Ticket bookTicket(User user, Ticket ticket) throws ServiceException, DaoException {
+            if(validate(user, ticket)){
+                userService.updateUserAccount(new UserAccount(user.getId(),
+                        userService.getUserCash(user) - ticket.getPrice()));
+                bookingDAO.create(user, ticket);
+            }
+            else throw new ServiceException(error);
+        return ticket;
+    }
+
+    private boolean areSeatsAlreadyBooked(Ticket ticket){
+        List<Ticket> bookedTickets = bookingDAO.getTickets(ticket.getEvent());
+        return bookedTickets.stream().filter(bookedTicket -> ticket.getSeatsList().stream().filter(
+                bookedTicket.getSeatsList() :: contains).findAny().isPresent()).findAny().isPresent();
+    }
+
+    private boolean hasEnoughCash(User user, Ticket ticket){
+        return userService.getUserCash(user) >= ticket.getPrice();
+    }
+
+    private boolean validate(User user, Ticket ticket) throws ServiceException {
         if (Objects.isNull(user)) {
             throw new ServiceException("User is [null]");
         }
@@ -142,17 +164,15 @@ public class BookingServiceImpl implements BookingService {
         if (Objects.isNull(foundUser)) {
             throw new ServiceException("User: [" + user + "] is not registered");
         }
-
-        List<Ticket> bookedTickets = bookingDAO.getTickets(ticket.getEvent());
-        boolean seatsAreAlreadyBooked = bookedTickets.stream().filter(bookedTicket -> ticket.getSeatsList().stream().filter(
-                bookedTicket.getSeatsList() :: contains).findAny().isPresent()).findAny().isPresent();
-
-        if (!seatsAreAlreadyBooked)
-            bookingDAO.create(user, ticket);
-        else
-            throw new ServiceException("Unable to book ticket: [" + ticket + "]. Seats are already booked.");
-
-        return ticket;
+        if(areSeatsAlreadyBooked(ticket)) {
+            error = "seats are already booked";
+            return false;
+        }
+        if(!hasEnoughCash(user, ticket)){
+            error = "not enough cash";
+            return false;
+        }
+        return true;
     }
 
     @Override

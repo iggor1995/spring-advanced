@@ -78,7 +78,7 @@ public class TicketController {
         try {
             bookingService.bookTicket(user, ticket);
         } catch (ServiceException e){
-            model.addAttribute("error", "seat is already booked");
+            model.addAttribute("error", e);
             return "home";
         }
         return "redirect:/home";
