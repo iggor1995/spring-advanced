@@ -1,15 +1,11 @@
 package beans.services.api;
 
 import beans.models.Auditorium;
+import beans.models.Event;
+import beans.models.Ticket;
 
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 2/3/2016
- * Time: 11:04 AM
- */
 public interface AuditoriumService {
 
     List<Auditorium> getAuditoriums();
@@ -19,4 +15,6 @@ public interface AuditoriumService {
     int getSeatsNumber(String auditoriumName);
 
     List<Integer> getVipSeats(String auditoriumName);
+
+    List<Integer> getAvailableSeats(String auditoriumName, Event event, List<Ticket> cartTickets);
 }

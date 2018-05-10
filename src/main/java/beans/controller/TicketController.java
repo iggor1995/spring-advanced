@@ -61,10 +61,12 @@ public class TicketController {
     }
 
     @RequestMapping(value = "/user/bookTicketsPage", method = RequestMethod.POST)
-    public String bookTickets(@RequestParam("eventId") String eventId, Model model){
+    @SuppressWarnings("unchecked")
+    public String bookTickets(@RequestParam("eventId") String eventId, Model model, HttpServletRequest request){
 
         Event event = eventService.getById(Long.valueOf(eventId));
-        Integer seats = auditoriumService.getSeatsNumber(event.getAuditorium().getName());
+        List<Ticket> tickets = (List<Ticket>) request.getSession().getAttribute("cart");
+        List<Integer> seats = auditoriumService.getAvailableSeats(event.getAuditorium().getName(), event, tickets);
         model.addAttribute("event", event);
         model.addAttribute("seats", seats);
         return "bookTickets";
@@ -78,18 +80,12 @@ public class TicketController {
         List<Integer> seatsList = new ArrayList<>();
         seatsList.add(seat);
         Ticket ticket = new Ticket(event, event.getDateTime(), seatsList, user, event.getBasePrice());
-       // try {
-            //bookingService.bookTicket(user, ticket);
-            List<Ticket> cart = (List<Ticket>) request.getSession().getAttribute("cart");
-            if(cart == null){
-                cart = new ArrayList<>();
-            }
-            cart.add(ticket);
-            request.getSession().setAttribute("cart", cart);
-//        } catch (ServiceException e){
-//            model.addAttribute("error", e);
-//            return "home";
-//        }
+        List<Ticket> cart = (List<Ticket>) request.getSession().getAttribute("cart");
+        if(cart == null){
+            cart = new ArrayList<>();
+        }
+        cart.add(ticket);
+        request.getSession().setAttribute("cart", cart);
         return "redirect:/home";
     }
 

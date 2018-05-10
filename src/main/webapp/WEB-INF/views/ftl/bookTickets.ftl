@@ -23,15 +23,13 @@
             <td>${event.basePrice}</td>
             <td>${event.dateTime}</td>
             <@security.authorize  access="hasRole('ROLE_REGISTERED_USER')">
-                <@security.authentication property="principal.name"
-                var="email" scope="page" />
+                <@security.authentication property="principal.name" var="email" scope="page" />
                     <form name="book" action="/spring_adv/user/bookTickets" method="post">
                         <input type="hidden" name="userEmail" value="${.globals.email}">
                         <input type="hidden" name="eventId" value="${event.id}">
                         <td>
                             <select name="seat">
-                                <#assign x=.data_model["seats"]>
-                                <#list 1..x as i>
+                                <#list .data_model["seats"] as i>
                                     <option>${i}</option>
                                 </#list>
                             </select>
