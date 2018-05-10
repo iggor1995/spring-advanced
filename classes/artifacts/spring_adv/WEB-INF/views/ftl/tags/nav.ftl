@@ -49,7 +49,7 @@
         </li>
         <@security.authorize  access="hasRole('ROLE_BOOKING_MANAGER')">
             <li class="nav-item">
-                <form name="showUsers" action="manager/pageAddEvent" method="get" >
+                <form name="showUsers" action="/spring_adv/manager/pageAddEvent" method="get" >
                     <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
                         Add event</button>
                 </form>
@@ -64,7 +64,7 @@
             </li>
             <li class="nav-item">
                 <@security.authentication property="principal.name" var="email" scope="page" />
-                <form name="showCart" action="/spring_adv/user/getTickets" method="post" >
+                <form name="getTickets" action="/spring_adv/user/getTickets" method="post" >
                     <input type="hidden" name="userEmail" value="${.globals.email}">
                     <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
                         Show booked tickets</button>

@@ -19,7 +19,7 @@
 <div class="row align-items-center justify-content-center" >
     <legend>Add Movie</legend>
     <div class="span6" style="background-color: #9fcdff; border: 2px solid deepskyblue" align="center">
-        <form name="event" action="addEvent" method="post">
+        <form name="event" action="/spring_adv/manager/addEvent" method="post">
             <div class="form-group" align="left">
                 <label for="name">Name</label>
                 <input id="name" type="text" name="name" />
@@ -29,7 +29,7 @@
                 <input id="price" type="number" name="basePrice" />
             </div>
             <div class="form-group" align="left">
-                <labe for="date">Date and time</labe>
+                <label for="date">Date and time</label>
                 <input id="date" type="datetime-local" name="dateTime" value="2017-06-01T08:30"/>
             </div>
             <div class="form-group" align="left">

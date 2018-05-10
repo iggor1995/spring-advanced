@@ -39,7 +39,6 @@
                         </td>
                     </form>
             </@security.authorize>
-            </td>
         </tr>
     </table>
 </div>

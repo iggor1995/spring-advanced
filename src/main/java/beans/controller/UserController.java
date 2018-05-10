@@ -2,6 +2,7 @@ package beans.controller;
 
 import beans.daos.DaoException;
 import beans.models.User;
+import beans.models.UserAccount;
 import beans.services.ServiceException;
 import beans.services.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +58,13 @@ public class UserController {
         return "showUsers";
     }
 
-
+    @RequestMapping(value = "/manager/refill", method = RequestMethod.POST)
+    public String refill(@RequestParam("userId") long id, @RequestParam("cash") double cash){
+        UserAccount userAccount = userService.getUserAccount(id);
+        userAccount.setCash(userAccount.getCash() + cash);
+        userService.updateUserAccount(userAccount);
+        return "redirect:/getUsers";
+    }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request){

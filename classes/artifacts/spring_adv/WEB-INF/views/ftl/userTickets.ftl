@@ -4,8 +4,6 @@
 
 <body>
 <@u.page/>
-<@c.page/>
-
 <div id="content">
 <#--TABLE-->
 <#if  model["tickets"]?has_content>
