@@ -1,8 +1,10 @@
-<#import "tags/nav.ftl"as u>
+<#import "tags/nav.ftl" as u>
+<#import "tags/carousel.ftl" as c>
 <html>
 
 <body>
 <@u.page/>
+<@c.page/>
 
 <div id="content">
 <#--TABLE-->

@@ -14,6 +14,7 @@ import beans.services.impl.EventServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -68,19 +70,59 @@ public class TicketController {
         return "bookTickets";
     }
     @RequestMapping(value = "/user/bookTickets", method = RequestMethod.POST)
-    public String createAndBookTicket(@RequestParam("eventId") String eventId, @RequestParam("userEmail") String userEmail,
-                                      @RequestParam("seat") Integer seat, @ModelAttribute("model") ModelMap model) throws ServiceException, DaoException {
+    @SuppressWarnings("unchecked")
+    public String addTicketToCart(@RequestParam("eventId") String eventId, @RequestParam("userEmail") String userEmail,
+                                      @RequestParam("seat") Integer seat, @ModelAttribute("model") ModelMap model, HttpServletRequest request) throws ServiceException, DaoException {
         Event event = eventService.getById(Long.valueOf(eventId));
         User user = userService.getUserByEmail(userEmail);
         List<Integer> seatsList = new ArrayList<>();
         seatsList.add(seat);
         Ticket ticket = new Ticket(event, event.getDateTime(), seatsList, user, event.getBasePrice());
+       // try {
+            //bookingService.bookTicket(user, ticket);
+            List<Ticket> cart = (List<Ticket>) request.getSession().getAttribute("cart");
+            if(cart == null){
+                cart = new ArrayList<>();
+            }
+            cart.add(ticket);
+            request.getSession().setAttribute("cart", cart);
+//        } catch (ServiceException e){
+//            model.addAttribute("error", e);
+//            return "home";
+//        }
+        return "redirect:/home";
+    }
+
+    @RequestMapping(value = "/user/bookCart", method = RequestMethod.POST)
+    @SuppressWarnings("unchecked")
+    @Transactional(rollbackFor = ServiceException.class )
+    public String bookCart(@RequestParam("userEmail") String userEmail,
+                                       @ModelAttribute("model") ModelMap model, HttpServletRequest request) throws ServiceException, DaoException {
+        User user = userService.getUserByEmail(userEmail);
+        List<Ticket> cart = (List<Ticket>) request.getSession().getAttribute("cart");
         try {
-            bookingService.bookTicket(user, ticket);
+            for(Ticket ticket : cart) {
+                bookingService.bookTicket(user, ticket);
+            }
         } catch (ServiceException e){
             model.addAttribute("error", e);
-            return "home";
+            return "cart";
         }
+        request.getSession().removeAttribute("cart");
         return "redirect:/home";
+    }
+
+
+    @RequestMapping(value = "user/getCart", method = RequestMethod.GET)
+    @SuppressWarnings("unchecked")
+    public String getCart(@ModelAttribute("model") ModelMap model, HttpServletRequest request){
+        List<Ticket> tickets = (List<Ticket>) request.getSession().getAttribute("cart");
+        double totalprice = 0;
+        if(tickets != null)
+        for(Ticket ticket : tickets){
+            totalprice += ticket.getPrice();
+        }
+        model.addAttribute("totalPrice", totalprice);
+        return "cart";
     }
 }

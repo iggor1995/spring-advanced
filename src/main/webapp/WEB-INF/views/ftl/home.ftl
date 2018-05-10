@@ -1,4 +1,5 @@
 <#import "tags/nav.ftl" as u>
+<#import "tags/carousel.ftl" as c>
 <#assign  security=JspTaglibs["http://www.springframework.org/security/tags"] />
 <html>
 <style>
@@ -12,6 +13,7 @@
 </style>
 <body>
 <@u.page/>
+<@c.page/>
 <#--TABLE-->
 <#if  model["events"]?has_content>
 <div class="container">

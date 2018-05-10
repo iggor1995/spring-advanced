@@ -57,6 +57,8 @@ public class UserController {
         return "showUsers";
     }
 
+
+
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request){
         request.getSession().removeAttribute("registeredUser");
