@@ -4,11 +4,10 @@ import beans.daos.DaoException;
 import beans.models.Event;
 import beans.models.Ticket;
 import beans.models.User;
+import beans.models.UserAccount;
 import beans.services.ServiceException;
-import beans.services.api.AuditoriumService;
-import beans.services.api.BookingService;
-import beans.services.api.EventService;
-import beans.services.api.UserService;
+import beans.services.api.*;
+import beans.services.discount.DiscountStrategy;
 import beans.services.impl.AuditoriumServiceImpl;
 import beans.services.impl.EventServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -52,6 +48,14 @@ public class TicketController {
     @Qualifier("auditoriumServiceImpl")
     AuditoriumService auditoriumService;
 
+    @Resource
+    @Qualifier("birthdayStrategy")
+    DiscountStrategy birthdayStrategy;
+
+    @Resource
+    @Qualifier("ticketsStrategy")
+    DiscountStrategy ticketsStrategy;
+
     @RequestMapping(value = "/manager/getTickets", method = RequestMethod.POST)
     public String getTickets(@RequestParam("eventName") String event, @RequestParam("auditorium") String auditorium,
                              @RequestParam("date")LocalDateTime dateTime, @ModelAttribute("model")Model model){
@@ -71,6 +75,7 @@ public class TicketController {
         model.addAttribute("seats", seats);
         return "bookTickets";
     }
+
     @RequestMapping(value = "/user/bookTickets", method = RequestMethod.POST)
     @SuppressWarnings("unchecked")
     public String addTicketToCart(@RequestParam("eventId") String eventId, @RequestParam("userEmail") String userEmail,
@@ -96,8 +101,11 @@ public class TicketController {
                                        @ModelAttribute("model") ModelMap model, HttpServletRequest request) throws ServiceException, DaoException {
         User user = userService.getUserByEmail(userEmail);
         List<Ticket> cart = (List<Ticket>) request.getSession().getAttribute("cart");
+        double discount = ticketsStrategy.calculateDiscount(user) + birthdayStrategy.calculateDiscount(user);
+        ;
         try {
             for(Ticket ticket : cart) {
+                ticket.setPrice(ticket.getPrice() - ticket.getPrice() * discount);
                 bookingService.bookTicket(user, ticket);
             }
         } catch (ServiceException e){
@@ -105,11 +113,15 @@ public class TicketController {
             return "cart";
         }
         request.getSession().removeAttribute("cart");
+        UserAccount userAccount = userService.getUserAccount(user.getId());
+        userAccount.setCash(userAccount.getCash() + discount);
+        userService.updateUserAccount(userAccount);
+        model.addAttribute("discount", discount);
         return "redirect:/home";
     }
 
 
-    @RequestMapping(value = "user/getCart", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/getCart", method = RequestMethod.GET)
     @SuppressWarnings("unchecked")
     public String getCart(@ModelAttribute("model") ModelMap model, HttpServletRequest request){
         List<Ticket> tickets = (List<Ticket>) request.getSession().getAttribute("cart");
@@ -121,4 +133,14 @@ public class TicketController {
         model.addAttribute("totalPrice", totalprice);
         return "cart";
     }
+
+    @RequestMapping(value = "/user/getTickets", method = RequestMethod.POST)
+    @SuppressWarnings("unchecked")
+    public String getCart(@ModelAttribute("model") ModelMap model, @RequestParam("userEmail") String userEmail) throws ServiceException {
+        List<Ticket> tickets = bookingService.getUserTickets(userService.getUserByEmail(userEmail));
+        model.addAttribute("tickets", tickets);
+        return "userTickets";
+    }
+
+
 }

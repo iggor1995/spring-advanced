@@ -48,6 +48,7 @@ beans\services\api\DiscountService.class
 beans\daos\db\EventDAOImpl.class
 beans\models\converter\StringToUserConverter.class
 beans\services\impl\EventServiceImpl.class
+beans\PDFView\TicketPDFView.class
 beans\models\Rate.class
 beans\services\api\BookingService.class
 beans\models\converter\StringToEventConverter.class

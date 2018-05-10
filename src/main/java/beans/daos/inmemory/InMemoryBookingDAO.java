@@ -63,4 +63,9 @@ public class InMemoryBookingDAO implements BookingDAO {
     public List<Ticket> getAllTickets() {
         return db.values().stream().flatMap(Collection:: stream).collect(Collectors.toList());
     }
+
+    @Override
+    public Ticket getById(long id) {
+        return null;
+    }
 }

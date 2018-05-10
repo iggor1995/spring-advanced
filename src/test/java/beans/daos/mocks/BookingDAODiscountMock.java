@@ -8,12 +8,7 @@ import beans.models.User;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Dmytro_Babichev
- * Date: 06/2/16
- * Time: 3:08 AM
- */
+
 public class BookingDAODiscountMock implements BookingDAO {
 
     public final String userThatBookedTickets;
@@ -51,6 +46,11 @@ public class BookingDAODiscountMock implements BookingDAO {
 
     @Override
     public List<Ticket> getAllTickets() {
+        return null;
+    }
+
+    @Override
+    public Ticket getById(long id) {
         return null;
     }
 }

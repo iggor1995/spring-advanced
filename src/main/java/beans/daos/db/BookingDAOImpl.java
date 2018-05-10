@@ -66,4 +66,10 @@ public class BookingDAOImpl extends AbstractDAO implements BookingDAO {
         Query query = getCurrentSession().createQuery("select b.ticket from Booking b");
         return ((List<Ticket>) query.list());
     }
+
+    @Override
+    public Ticket getById(long id) {
+        return getCurrentSession().get(Ticket.class, id);
+    }
+
 }

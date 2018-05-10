@@ -22,6 +22,8 @@ public interface BookingDAO {
 
     List<Ticket> getAllTickets();
 
+    Ticket getById(long id);
+
     static void validateUser(User user) throws DaoException {
         if (Objects.isNull(user)) {
             throw new DaoException("User is [null]");

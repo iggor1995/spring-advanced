@@ -27,10 +27,17 @@ public class PDFController {
     BookingService bookingService;
 
     @RequestMapping(value = "/manager/report", method = RequestMethod.POST)
-    public String handleAllTradesRequests (Model model) {
+    public String getTicketsReport (Model model) {
         List<Ticket> tickets = bookingService.getAllTickets();
 
         model.addAttribute("report", tickets);
         return "reportView";
+    }
+
+    @RequestMapping(value = "/user/report", method = RequestMethod.POST)
+    public String getPurchasedTicket (Model model, @RequestParam("ticketId") long ticketId) {
+        Ticket ticket = bookingService.getTicketById(ticketId);
+        model.addAttribute("ticket", ticket);
+        return "ticketView";
     }
 }

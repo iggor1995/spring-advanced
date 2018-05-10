@@ -3,9 +3,9 @@
 <html>
 <body>
 <@u.page/>
-<div id="content">
+<div class="container">
     <br/>
-    <table class="datatable">
+    <table class="table table-dark table-striped">
         <tr>
             <th>Name</th>
             <th>Auditorium</th>

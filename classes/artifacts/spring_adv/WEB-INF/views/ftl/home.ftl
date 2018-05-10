@@ -14,6 +14,10 @@
 <body>
 <@u.page/>
 <@c.page/>
+
+<#if model["discount"]??>
+    <h2>Today you have discount - ${model["discount"]}. So you've got some cash back!</h2>
+</#if>
 <#--TABLE-->
 <#if  model["events"]?has_content>
 <div class="container">

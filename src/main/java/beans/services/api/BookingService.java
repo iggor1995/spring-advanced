@@ -17,4 +17,8 @@ public interface BookingService {
     Ticket bookTicket(User user, Ticket ticket) throws ServiceException, DaoException;
 
     List<Ticket> getTicketsForEvent(String event, String auditorium, LocalDateTime date);
+
+    Ticket getTicketById(long id);
+
+    List<Ticket> getUserTickets(User user) throws ServiceException;
 }

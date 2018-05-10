@@ -57,9 +57,17 @@
         </@security.authorize>
         <@security.authorize  access="hasRole('ROLE_REGISTERED_USER')">
             <li class="nav-item">
-                <form name="showCart" action="user/getCart" method="get" >
+                <form name="showCart" action="/spring_adv/user/getCart" method="get" >
                     <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
                        Show cart</button>
+                </form>
+            </li>
+            <li class="nav-item">
+                <@security.authentication property="principal.name" var="email" scope="page" />
+                <form name="showCart" action="/spring_adv/user/getTickets" method="post" >
+                    <input type="hidden" name="userEmail" value="${.globals.email}">
+                    <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
+                        Show booked tickets</button>
                 </form>
             </li>
         </@security.authorize>
@@ -70,9 +78,6 @@
                         Logout</button>
                 </form>
             </li>
-        <li class="nav-item">
-            <h2></h2>
-        </li>
         </@security.authorize>
     </div>
 </nav>
@@ -100,37 +105,6 @@
     </div>
 </div>
 <#--/LOGIN-->
-
-<#--&lt;#&ndash;CAROUSEL&ndash;&gt;-->
-<#--<div class="container-fluid p-0">-->
-    <#--<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">-->
-        <#--<ol class="carousel-indicators">-->
-            <#--<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>-->
-            <#--<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>-->
-            <#--<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>-->
-        <#--</ol>-->
-        <#--<div class="carousel-inner">-->
-            <#--<div class="carousel-item active">-->
-                <#--<img class="d-block w-100" src= "/spring_adv/resources/images/tombRaider.jpg" alt="First slide">-->
-            <#--</div>-->
-            <#--<div class="carousel-item">-->
-                <#--<img class="d-block w-100" src="/spring_adv/resources/images/MazeRunner.jpg" alt="Second slide">-->
-            <#--</div>-->
-            <#--<div class="carousel-item">-->
-                <#--<img class="d-block w-100" src="/spring_adv/resources/images/Avengers.jpg" alt="Third slide">-->
-            <#--</div>-->
-        <#--</div>-->
-        <#--<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">-->
-            <#--<span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-            <#--<span class="sr-only">Previous</span>-->
-        <#--</a>-->
-        <#--<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">-->
-            <#--<span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-            <#--<span class="sr-only">Next</span>-->
-        <#--</a>-->
-    <#--</div>-->
-<#--</div>-->
-<#--&lt;#&ndash;/CAROUSEL&ndash;&gt;-->
 
 <#--REGISTER-->
 <div class="container" align="center">

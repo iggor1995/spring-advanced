@@ -65,6 +65,11 @@ public class UserServiceImpl implements UserService {
         throw new UnsupportedOperationException("not implemented yet");
     }
 
+    @Override
+    public UserAccount getUserAccount(long userId) {
+        return userAccountDAO.getByUserId(userId);
+    }
+
     public double getUserCash(User user){
         return userAccountDAO.getByUserId(user.getId()).getCash();
     }

@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service("auditoriumServiceImpl")
 @Transactional
@@ -55,7 +56,7 @@ public class AuditoriumServiceImpl implements AuditoriumService {
         List<Ticket> bookedTickets = bookingDAO.getTickets(event);
         List<Integer> bookedSeats = new ArrayList<>();
         if(cartTickets != null)
-            bookedTickets.addAll(cartTickets);
+            bookedTickets.addAll(cartTickets.stream().filter(ticket -> ticket.getEvent().equals(event)).collect(Collectors.toList()));
         List<Integer> availableSeats = new ArrayList<>();
         for(Ticket ticket : bookedTickets){
             String seats[] = ticket.getSeats().split(",");

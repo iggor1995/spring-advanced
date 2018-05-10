@@ -49,6 +49,7 @@ C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\Booking.j
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\impl\AuditoriumServiceImpl.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\StrategiesConfiguration.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\inmemory\InMemoryBookingDAO.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\PDFView\TicketPDFView.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\BookingDAO.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\db\DbSessionFactory.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\deserializer\LocalDateDeserializer.java
