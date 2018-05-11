@@ -16,12 +16,16 @@
 <@c.page/>
 
 <#if model["discount"]??>
-    <h2>Today you have discount - ${model["discount"]}. So you've got some cash back!</h2>
+    <h2><p style="color: white">Today you have discount - ${model["discount"]}. So you've got some cash back!</p></h2>
 </#if>
+<#if model["userCash"]?has_content>
+    <h2><p style="color: white">Account ${model["userCash"]}</p></h2>
+</#if>
+
 <#--TABLE-->
 <#if  model["events"]?has_content>
 <div class="container">
-    <table class="table table-light table-striped">
+    <table class="table table-dark table-striped">
         <thead>
         <tr>
             <th>Auditorium</th>
@@ -51,41 +55,42 @@
         </#list>
         </tbody>
     </table>
-</#if>
 </div>
-<#--/TABLE-->
-<#if model["error"]??>
-    <h2>${model["error"]}</h2>
 </#if>
-<div style="background-color:#9fcdff;color:white;padding:20px;">
-    <p>If there is no data - upload files events.json and users.json from: /resources/json </p>
+<#--/TABLE-->
+
+<#if model["error"]??>
+    <h2<p style="color: white">${model["error"]}</p></h2>
+</#if>
+<div style="background-color:#171a1d;padding:10px;opacity: 0.7">
+    <p style="color: #0c5460">If there is no data - upload files events.json and users.json from: /resources/json </p>
 </div><br/>
 
 <#--UPLOAD-->
-    <div class="row align-items-center justify-content-center" >
+    <div class="row align-items-center justify-content-center">
         <@security.authorize  access="hasRole('ROLE_BOOKING_MANAGER')">
-            <div class="span6" style="background-color: #9fcdff; border: 2px solid deepskyblue" align="center" >
+            <div class="span6" style="background-color: #171a1d; border: 1px solid black" align="center" >
                     <form method="post" action="eventsUpload" enctype="multipart/form-data">
-                        <h2 class="form-signin-heading">Upload events</h2>
-                        <input type="file" name="file"/>
-                        <button type="submit" class="btn btn-primary">Load events</button>
+                        <h2 class="form-signin-heading"><p style="color: #0c5460">Upload events</p></h2>
+                        <input type="file" name="file" style="color: #0c5460"/>
+                        <button type="submit" class="btn btn-primary" style="background-color: #0c5460">Load events</button>
                     </form>
             </div>
         </@security.authorize>
-            <div class="span6" style="background-color: #9fcdff; border: 2px solid deepskyblue" align="center">
+            <div class="span6" style="background-color: #171a1d; border: 1px solid black" align="center">
                 <form method="post" action="usersUpload" enctype="multipart/form-data">
-                    <h2 class="form-signin-heading">Upload users</h2>
-                    <input type="file" name="file"/>
-                    <button type="submit" class="btn btn-primary">Load users</button>
+                    <h2 class="form-signin-heading"><p style="color: #0c5460">Upload users</p></h2>
+                    <input type="file" name="file" style="color: #0c5460"/>
+                    <button type="submit" class="btn btn-primary" style="background-color: #0c5460">Load users</button>
                 </form>
             </div>
     </div>
 <#--/UPLOAD-->
 
-<div class="row align-items-center justify-content-center" >
+<div class="row align-items-center justify-content-center" style="background-color: grey; opacity: 0.8;" >
 <@security.authorize  access="hasRole('ROLE_BOOKING_MANAGER')">
-        <form method="post" action="manager/report" name="PDF">
-            <button type="submit" class="btn btn-primary">Get tickets [PDF]</button>
+        <form method="post" action="manager/report" name="PDF"  >
+            <button type="submit" class="btn btn-primary" style="background-color: #0c5460">Get tickets [PDF]</button>
         </form>
 </@security.authorize>
 </div>

@@ -18,22 +18,22 @@
 <@u.page/>
 <div class="row align-items-center justify-content-center" >
     <legend>Add Movie</legend>
-    <div class="span6" style="background-color: #9fcdff; border: 2px solid deepskyblue" align="center">
+    <div class="span6" style="background-color: #0c5460; opacity: 0.7; border: 1px solid black" align="center">
         <form name="event" action="/spring_adv/manager/addEvent" method="post">
             <div class="form-group" align="left">
-                <label for="name">Name</label>
+                <label for="name"><p style="color: azure">Name</p></label>
                 <input id="name" type="text" name="name" />
             </div>
             <div class="form-group" align="left">
-                <label for="price">Base price</label>
+                <label for="price"><p style="color: azure">Base price</p></label>
                 <input id="price" type="number" name="basePrice" />
             </div>
             <div class="form-group" align="left">
-                <label for="date">Date and time</label>
+                <label for="date"><p style="color: azure">Date and time</p></label>
                 <input id="date" type="datetime-local" name="dateTime" value="2017-06-01T08:30"/>
             </div>
             <div class="form-group" align="left">
-                <label for="rate">Rate</label>
+                <label for="rate"><p style="color: azure">Rate</p></label>
                     <select id="rate" name="rate">
                         <option selected="selected">HIGH</option>
                         <option>MID</option>
@@ -50,7 +50,7 @@
                 </label>
             </div>
             <@security.authorize  access="hasRole('ROLE_BOOKING_MANAGER')">
-                <button type="submit" class="btn btn-primary">Add movie</button>
+                <button type="submit" class="btn btn-primary" style="background-color: #0c5460">Add movie</button>
             </@security.authorize>
         </form>
     </div>

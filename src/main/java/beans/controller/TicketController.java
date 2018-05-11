@@ -22,6 +22,7 @@ import javax.annotation.Resource;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -101,31 +102,33 @@ public class TicketController {
                                        @ModelAttribute("model") ModelMap model, HttpServletRequest request) throws ServiceException, DaoException {
         User user = userService.getUserByEmail(userEmail);
         List<Ticket> cart = (List<Ticket>) request.getSession().getAttribute("cart");
-        double discount = ticketsStrategy.calculateDiscount(user) + birthdayStrategy.calculateDiscount(user);
-        ;
-        try {
-            for(Ticket ticket : cart) {
-                ticket.setPrice(ticket.getPrice() - ticket.getPrice() * discount);
-                bookingService.bookTicket(user, ticket);
+        if(cart != null) {
+            double discount = ticketsStrategy.calculateDiscount(user) + birthdayStrategy.calculateDiscount(user);
+            try {
+                for (Ticket ticket : cart) {
+                    ticket.setPrice(ticket.getPrice() - ticket.getPrice() * discount);
+                    bookingService.bookTicket(user, ticket);
+                }
+            } catch (ServiceException e) {
+                model.addAttribute("error", e);
+                return "cart";
             }
-        } catch (ServiceException e){
-            model.addAttribute("error", e);
-            return "cart";
+            request.getSession().removeAttribute("cart");
+            UserAccount userAccount = userService.getUserAccount(user.getId());
+            userAccount.setCash(userAccount.getCash() + discount);
+            userService.updateUserAccount(userAccount);
+            model.addAttribute("discount", discount);
         }
-        request.getSession().removeAttribute("cart");
-        UserAccount userAccount = userService.getUserAccount(user.getId());
-        userAccount.setCash(userAccount.getCash() + discount);
-        userService.updateUserAccount(userAccount);
-        model.addAttribute("discount", discount);
         return "redirect:/home";
     }
 
-
     @RequestMapping(value = "/user/getCart", method = RequestMethod.GET)
     @SuppressWarnings("unchecked")
-    public String getCart(@ModelAttribute("model") ModelMap model, HttpServletRequest request){
+    public String getCart(@ModelAttribute("model") ModelMap model, HttpServletRequest request, Principal principal){
         List<Ticket> tickets = (List<Ticket>) request.getSession().getAttribute("cart");
         double totalprice = 0;
+        UserAccount userAccount = userService.getUserAccount(userService.getUserByEmail(principal.getName()).getId());
+        model.addAttribute("userCash", userAccount.getCash());
         if(tickets != null)
         for(Ticket ticket : tickets){
             totalprice += ticket.getPrice();
@@ -142,5 +145,11 @@ public class TicketController {
         return "userTickets";
     }
 
+    @RequestMapping(value = "/user/deleteFromCart", method = RequestMethod.POST)
+    @SuppressWarnings("unchecked")
+    public String removeFromCart(HttpServletRequest request) throws ServiceException {
+        request.getSession().removeAttribute("cart");
+        return "redirect:/user/getCart";
+    }
 
 }

@@ -3,6 +3,10 @@
 <html>
 <body>
 <@u.page/>
+
+<#if model["userCash"]??>
+    <h2><p style="color: white">Account ${model["userCash"]}</p></h2>
+</#if>
 <div class="container">
     <br/>
     <table class="table table-dark table-striped" >
@@ -24,6 +28,9 @@
                     <td>${ticket.event.dateTime}</td>
                     <td>${ticket.seats}</td>
                 </tr>
+                <form name="book" action="/spring_adv/user/deleteFromCart" method="post">
+                    <button type="submit" class="btn btn-primary">Remove</button>
+                </form>
             </#list>
         <#else>
         <h2>There is no tickets in the cart</h2>

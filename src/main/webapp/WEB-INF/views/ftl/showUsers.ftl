@@ -45,12 +45,12 @@
 
 <#--/TABLE-->
     <div class="row align-items-center justify-content-center" >
-        <h1>You can upload file with users below</h1><br/>
-        <div class="span6" style="background-color: #9fcdff; border: 2px solid deepskyblue" align="center">
+        <h2><p style="color: #0c5460"> You can upload file with users below</p></h2><br/>
+        <div class="span6" style="background-color: #171a1d;  align="center">
             <form method="post" action="usersUpload" enctype="multipart/form-data">
-                <h2 class="form-signin-heading">Upload users</h2>
-                <input type="file" name="file"/>
-                <button type="submit" class="btn btn-primary">Load users</button>
+                <h2 class="form-signin-heading"><p style="color: #0c5460">Upload users</p></h2>
+                <input type="file" name="file" style="color: #0c5460"/>
+                <button type="submit" class="btn btn-primary" style="background-color: #0c5460">Load users</button>
             </form>
         </div>
     </div>

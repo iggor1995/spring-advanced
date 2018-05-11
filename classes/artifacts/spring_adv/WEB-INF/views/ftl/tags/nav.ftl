@@ -17,40 +17,41 @@
 <style>
     body {
         padding-top: 100px;
+        background-image:url('/spring_adv/resources/images/background.jpg');
     }
     #mainNav {
         opacity: 0.8;
-        background: steelblue;
+        background: midnightblue;
     }
 </style>
 <body>
 <#--NAVBAR-->
-<nav class="navbar fixed-top navbar-toggleable-md navbar-inverse" id="mainNav">
-    <div class="container align-items-center">
+<nav class="navbar fixed-top navbar-expand-sm navbar-inverse " id="mainNav">
+    <ul class="navbar-nav">
         <li class="nav-item" >
             <form name="showUsers" action="/spring_adv/home" method="get" >
-                <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
+                <button type="submit" class="btn btn-primary" style="background-color: #0c5460">
                     Home</button>
             </form>
         </li>
         <@security.authorize access="!isAuthenticated()">
             <li class="nav-item" >
-                <a class="btn btn-primary" data-toggle="modal" href="#myModal" style="background-color: #9fcdff">Login</a>
+                <a class="btn btn-primary" data-toggle="modal" href="#myModal" style="background-color: #0c5460">Login</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-primary" data-toggle="modal" href="#myRegisterModal" style="background-color: #9fcdff">Register</a>
+                <a class="btn btn-primary" data-toggle="modal" href="#myRegisterModal" style="background-color: #0c5460">Register</a>
             </li>
         </@security.authorize>
         <li class="nav-item">
             <form name="showUsers" action="/spring_adv/getUsers" method="get">
-                <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
+                <button type="submit" class="btn btn-primary" style="background-color: #0c5460">
                     See all users</button><br/>
             </form>
         </li>
         <@security.authorize  access="hasRole('ROLE_BOOKING_MANAGER')">
             <li class="nav-item">
                 <form name="showUsers" action="/spring_adv/manager/pageAddEvent" method="get" >
-                    <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
+                    <button type="submit" class="btn btn-primary" style="background-color: #0c5460">
                         Add event</button>
                 </form>
              </li>
@@ -58,7 +59,7 @@
         <@security.authorize  access="hasRole('ROLE_REGISTERED_USER')">
             <li class="nav-item">
                 <form name="showCart" action="/spring_adv/user/getCart" method="get" >
-                    <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
+                    <button type="submit" class="btn btn-primary" style="background-color: #0c5460">
                        Show cart</button>
                 </form>
             </li>
@@ -66,7 +67,7 @@
                 <@security.authentication property="principal.name" var="email" scope="page" />
                 <form name="getTickets" action="/spring_adv/user/getTickets" method="post" >
                     <input type="hidden" name="userEmail" value="${.globals.email}">
-                    <button type="submit" class="btn btn-primary" style="background-color: #9fcdff">
+                    <button type="submit" class="btn btn-primary" style="background-color: #0c5460">
                         Show booked tickets</button>
                 </form>
             </li>
@@ -79,7 +80,7 @@
                 </form>
             </li>
         </@security.authorize>
-    </div>
+    </ul>
 </nav>
 <#--/NAVBAR-->
 <#--LOGIN-->
