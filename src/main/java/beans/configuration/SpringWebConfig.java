@@ -1,6 +1,7 @@
 package beans.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.cfg.HandlerInstantiator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;

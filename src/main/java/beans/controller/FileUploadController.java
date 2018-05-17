@@ -47,7 +47,7 @@ public class FileUploadController {
                 userService.register(user);
             }
             catch (Exception e) {
-                continue;
+                System.out.println("can't create this user, it probably already exists -> " + user);
             }
         }
     }
@@ -96,7 +96,7 @@ public class FileUploadController {
             try {
                 eventService.create(event);
             } catch (DaoException e){
-                continue;
+                System.out.println("can't create this event, it probably already exists -> " + event);
             }
         }
     }

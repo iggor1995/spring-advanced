@@ -20,6 +20,7 @@ beans\daos\inmemory\InMemoryBookingDAO.class
 beans\daos\inmemory\InMemoryAuditoriumDAO.class
 beans\daos\inmemory\InMemoryEventDAO.class
 beans\services\impl\UserDetailsServiceImpl.class
+beans\controller\RestController.class
 beans\services\discount\DiscountStrategy.class
 beans\controller\FileUploadController$1.class
 beans\models\converter\StringToAuditoriumConverter.class
@@ -44,12 +45,14 @@ beans\models\Ticket.class
 beans\services\impl\DiscountServiceImpl.class
 Main.class
 beans\daos\AuditoriumDAO.class
+beans\models\serialiser\LocalDateTimeSerializer.class
 beans\services\api\DiscountService.class
 beans\daos\db\EventDAOImpl.class
 beans\models\converter\StringToUserConverter.class
 beans\services\impl\EventServiceImpl.class
 beans\PDFView\TicketPDFView.class
 beans\models\Rate.class
+beans\models\serialiser\LocalDateSerializer.class
 beans\services\api\BookingService.class
 beans\models\converter\StringToEventConverter.class
 beans\configuration\db\DbSessionFactory$1.class

@@ -9,9 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created by Igor_Lapin on 5/9/2018.
- */
 @Repository("userAccountDao")
 public class UserAccountDaoImpl extends AbstractDAO implements UserAccountDao {
 

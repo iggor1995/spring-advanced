@@ -30,7 +30,7 @@
                 <td>${ticket.event.dateTime}</td>
                 <td>${ticket.seats}</td>
                 <td>
-                    <form name="book" action="/spring_adv/user/report" method="post">
+                    <form name="book" action="/spring_adv/user/printTicket" method="post">
                         <input type="hidden" name="ticketId" value="${ticket.id}">
                         <button type="submit" class="btn btn-primary">Print</button>
                     </form>

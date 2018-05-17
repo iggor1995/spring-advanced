@@ -152,4 +152,12 @@ public class TicketController {
         return "redirect:/user/getCart";
     }
 
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @SuppressWarnings("unchecked")
+    public String add(HttpServletRequest request) throws ServiceException {
+        request.getSession().removeAttribute("cart");
+        return "redirect:/user/getCart";
+    }
+
+
 }

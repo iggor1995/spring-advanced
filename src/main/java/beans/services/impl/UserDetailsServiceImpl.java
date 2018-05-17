@@ -18,6 +18,7 @@ import java.util.List;
 /**
  * Created by Igor_Lapin on 5/4/2018.
  */
+
 @Service("userDetailsServiceImpl")
 @Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -25,8 +26,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Resource
     @Qualifier("userServiceImpl")
     private UserService userService;
-
-
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

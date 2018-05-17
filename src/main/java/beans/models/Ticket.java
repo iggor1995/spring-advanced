@@ -1,5 +1,7 @@
 package beans.models;
 
+import beans.models.serialiser.LocalDateTimeSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import util.CsvUtil;
 
 import java.time.LocalDateTime;
@@ -9,6 +11,7 @@ public class Ticket {
 
     private long          id;
     private Event         event;
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime dateTime;
     private String        seats;
     private User          user;

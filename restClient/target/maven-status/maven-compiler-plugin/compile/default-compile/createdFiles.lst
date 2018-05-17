@@ -1,0 +1,11 @@
+client\Event.class
+client\Role.class
+client\User.class
+client\deserializer\LocalDateTimeDeserializer.class
+client\AppRun.class
+client\CsvUtil.class
+client\Rate.class
+client\deserializer\LocalDateDeserializer.class
+client\Ticket.class
+client\Auditorium.class
+client\deserializer\AuditoriumDeserializer.class

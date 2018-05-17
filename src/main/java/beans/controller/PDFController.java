@@ -34,7 +34,7 @@ public class PDFController {
         return "reportView";
     }
 
-    @RequestMapping(value = "/user/report", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/printTicket", method = RequestMethod.POST)
     public String getPurchasedTicket (Model model, @RequestParam("ticketId") long ticketId) {
         Ticket ticket = bookingService.getTicketById(ticketId);
         model.addAttribute("ticket", ticket);

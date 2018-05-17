@@ -28,15 +28,15 @@
                     <td>${ticket.event.dateTime}</td>
                     <td>${ticket.seats}</td>
                 </tr>
-                <form name="book" action="/spring_adv/user/deleteFromCart" method="post">
-                    <button type="submit" class="btn btn-primary">Remove</button>
-                </form>
             </#list>
+            <form name="book" action="/spring_adv/user/deleteFromCart" method="post">
+                <button type="submit" class="btn btn-primary">Remove</button>
+            </form>
         <#else>
         <h2>There is no tickets in the cart</h2>
         </#if>
     </table>
-    <h2>Total price - ${model["totalPrice"]}</h2>
+    <h2><p style="color: white">Total price - ${model["totalPrice"]}</p></h2>
 <@security.authentication property="principal.name"
     var="email" scope="page" />
     <form name="book" action="/spring_adv/user/bookCart" method="post">

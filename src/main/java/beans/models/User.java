@@ -1,7 +1,9 @@
 package beans.models;
 
 import beans.models.deserializer.LocalDateDeserializer;
+import beans.models.serialiser.LocalDateSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -9,6 +11,7 @@ import java.time.LocalDate;
 public class User {
 
     private long      id;
+    @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate birthday;
     private String    email;
@@ -96,7 +99,6 @@ public class User {
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         if (name != null ? !name.equals(user.name) : user.name != null) return false;
         return password != null ? password.equals(user.password) : user.password == null;
-
     }
 
     @Override
