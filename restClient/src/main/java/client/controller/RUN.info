@@ -1,0 +1,11 @@
+This app runs on jetty plugin. To start app use terminal:
+mvn clean install -Djetty.http.port=9999 jetty:run
+
+
+Server will be running on port 9999
+
+to get Ticket info from spring_adv app:
+    - run spring_adv app
+    - make sure that there are users which have tickets
+    - run restClient
+    - in browser use : http://localhost:9999/getTicket/[insert existing ticket id] should start from 1 ( http://localhost:9999/getTicket/1)

@@ -8,9 +8,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
 
-/**
- * Created by Igor_Lapin on 5/17/2018.
- */
 public class AppRun {
     public static void main(String[] args) {
         final String url = "http://localhost:8080/spring_adv/user/report/{ticketId}";

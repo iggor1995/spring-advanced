@@ -1,11 +1,16 @@
-C:\Users\Igor_Lapin\Desktop\cons prod\restClient\src\main\java\client\deserializer\AuditoriumDeserializer.java
-C:\Users\Igor_Lapin\Desktop\cons prod\restClient\src\main\java\client\CsvUtil.java
-C:\Users\Igor_Lapin\Desktop\cons prod\restClient\src\main\java\client\Role.java
-C:\Users\Igor_Lapin\Desktop\cons prod\restClient\src\main\java\client\Auditorium.java
-C:\Users\Igor_Lapin\Desktop\cons prod\restClient\src\main\java\client\deserializer\LocalDateTimeDeserializer.java
-C:\Users\Igor_Lapin\Desktop\cons prod\restClient\src\main\java\client\deserializer\LocalDateDeserializer.java
-C:\Users\Igor_Lapin\Desktop\cons prod\restClient\src\main\java\client\Event.java
-C:\Users\Igor_Lapin\Desktop\cons prod\restClient\src\main\java\client\Rate.java
-C:\Users\Igor_Lapin\Desktop\cons prod\restClient\src\main\java\client\User.java
-C:\Users\Igor_Lapin\Desktop\cons prod\restClient\src\main\java\client\AppRun.java
-C:\Users\Igor_Lapin\Desktop\cons prod\restClient\src\main\java\client\Ticket.java
+C:\Users\Igor_Lapin\Desktop\restClient\src\main\java\client\util\CsvUtil.java
+C:\Users\Igor_Lapin\Desktop\restClient\src\main\java\client\model\Ticket.java
+C:\Users\Igor_Lapin\Desktop\restClient\src\main\java\client\viewResolver\PdfView.java
+C:\Users\Igor_Lapin\Desktop\restClient\src\main\java\client\configuration\AppInitializer.java
+C:\Users\Igor_Lapin\Desktop\restClient\src\main\java\client\model\Event.java
+C:\Users\Igor_Lapin\Desktop\restClient\src\main\java\client\deserializer\LocalDateDeserializer.java
+C:\Users\Igor_Lapin\Desktop\restClient\src\main\java\client\runner\AppRun.java
+C:\Users\Igor_Lapin\Desktop\restClient\src\main\java\client\deserializer\LocalDateTimeDeserializer.java
+C:\Users\Igor_Lapin\Desktop\restClient\src\main\java\client\viewResolver\PdfViewResolver.java
+C:\Users\Igor_Lapin\Desktop\restClient\src\main\java\client\configuration\AppConfig.java
+C:\Users\Igor_Lapin\Desktop\restClient\src\main\java\client\model\Rate.java
+C:\Users\Igor_Lapin\Desktop\restClient\src\main\java\client\deserializer\AuditoriumDeserializer.java
+C:\Users\Igor_Lapin\Desktop\restClient\src\main\java\client\model\User.java
+C:\Users\Igor_Lapin\Desktop\restClient\src\main\java\client\model\Auditorium.java
+C:\Users\Igor_Lapin\Desktop\restClient\src\main\java\client\model\Role.java
+C:\Users\Igor_Lapin\Desktop\restClient\src\main\java\client\controller\AppController.java

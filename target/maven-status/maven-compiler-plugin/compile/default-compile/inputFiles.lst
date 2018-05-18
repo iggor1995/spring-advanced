@@ -37,7 +37,6 @@ C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\UserDAO.jav
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\Ticket.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\db\UserAccountDaoImpl.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\aspects\LuckyWinnerAspect.java
-C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\Main.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\WebConfiguration.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\PDFView\ReportPdfView.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\impl\UserDetailsServiceImpl.java
@@ -65,7 +64,6 @@ C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\converter
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\inmemory\InMemoryAuditoriumDAO.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\converter\StringToLocalDateTimeConverter.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\controller\PDFController.java
-C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\controller\ControllerException.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\DaoException.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\api\UserService.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\UserAccount.java
