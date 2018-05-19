@@ -3,8 +3,12 @@ C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\db
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\impl\BookingServiceImpl.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\AuditoriumDAO.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\serialiser\LocalDateTimeSerializer.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\com\springadv\soap\package-info.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\api\BookingService.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\com\springadv\soap\ObjectFactory.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\soap\UserEndpoint.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\controller\ExceptionHandlerController.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\soap\AppConfig.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\api\AuditoriumService.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\AuditoriumConfiguration.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\db\BookingDAOImpl.java
@@ -18,6 +22,7 @@ C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\EventDAO.ja
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\Role.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\User.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\ServiceException.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\com\springadv\soap\GetUserResponse.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\controller\UserController.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\controller\MainController.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\api\DiscountService.java
@@ -25,6 +30,7 @@ C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\Auditoriu
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\UserAccountDao.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\impl\EventServiceImpl.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\SpringWebConfig.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\com\springadv\soap\GetUserRequest.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\SecurityConfiguration.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\impl\DiscountServiceImpl.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\converter\StringToEventConverter.java
@@ -42,6 +48,7 @@ C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\PDFView\ReportPd
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\impl\UserDetailsServiceImpl.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\util\CsvUtil.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\aspects\CounterAspect.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\soap\UserUtility.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\db\AuditoriumDAOImpl.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\discount\DiscountStrategy.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\aspects\DiscountAspect.java
@@ -49,9 +56,11 @@ C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\db\UserDAOI
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\inmemory\InMemoryEventDAO.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\Booking.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\services\impl\AuditoriumServiceImpl.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\com\springadv\soap\GetUsertRequest.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\StrategiesConfiguration.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\inmemory\InMemoryBookingDAO.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\PDFView\TicketPDFView.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\com\springadv\soap\User.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\BookingDAO.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\configuration\db\DbSessionFactory.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\deserializer\LocalDateDeserializer.java
@@ -62,6 +71,7 @@ C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\controller\FileU
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\inmemory\InMemoryUserDAO.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\converter\StringToUserConverter.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\inmemory\InMemoryAuditoriumDAO.java
+C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\soap\WebAppInitializer.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\converter\StringToLocalDateTimeConverter.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\controller\PDFController.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\DaoException.java
