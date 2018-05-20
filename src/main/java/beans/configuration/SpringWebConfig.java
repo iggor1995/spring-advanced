@@ -63,4 +63,5 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
         freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/views/ftl/");
         return freeMarkerConfigurer;
     }
+
 }

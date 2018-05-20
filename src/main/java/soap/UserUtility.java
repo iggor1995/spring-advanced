@@ -12,11 +12,11 @@ import javax.annotation.Resource;
  * Created by Igor_Lapin on 5/18/2018.
  */
 @Component
-@ComponentScan("beans")
+@ComponentScan("/beans")
 public class UserUtility {
 
     @Resource
-    @Qualifier("userServiseImpl")
+    @Qualifier("userServiceImpl")
     UserService userService;
 
     public com.springadv.soap.User getUser(long id){

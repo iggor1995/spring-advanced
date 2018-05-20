@@ -1,9 +1,13 @@
 package beans.configuration;
 
-import org.springframework.web.filter.DelegatingFilterProxy;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import org.springframework.ws.transport.http.MessageDispatcherServlet;
+import soap.AppConfig;
 
-import javax.servlet.Filter;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration.Dynamic;
 
 public class WebConfiguration extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -21,5 +25,21 @@ public class WebConfiguration extends AbstractAnnotationConfigDispatcherServletI
     protected Class<?>[] getRootConfigClasses() {
         return null;
     }
+
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        super.onStartup(servletContext);
+        AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
+        ctx.register(AppConfig.class);
+        ctx.setServletContext(servletContext);
+        MessageDispatcherServlet servlet = new MessageDispatcherServlet();
+		servlet.setApplicationContext(ctx);
+		servlet.setTransformWsdlLocations(true);
+        Dynamic dynamic = servletContext.addServlet("messageDispatcher",servlet);
+        dynamic.addMapping("/soapws/*");
+        dynamic.setLoadOnStartup(1);
+    }
+
+
 
 }

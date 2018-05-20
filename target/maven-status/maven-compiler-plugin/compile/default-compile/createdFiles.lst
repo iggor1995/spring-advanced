@@ -29,7 +29,6 @@ com\springadv\soap\GetUsertRequest.class
 beans\services\api\AuditoriumService.class
 beans\models\Ticket.class
 beans\models\converter\StringToUserConverter.class
-soap\WebAppInitializer.class
 beans\services\impl\EventServiceImpl.class
 soap\AppConfig.class
 beans\PDFView\TicketPDFView.class

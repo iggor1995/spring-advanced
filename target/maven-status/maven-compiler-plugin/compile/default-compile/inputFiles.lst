@@ -71,7 +71,6 @@ C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\controller\FileU
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\inmemory\InMemoryUserDAO.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\converter\StringToUserConverter.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\inmemory\InMemoryAuditoriumDAO.java
-C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\soap\WebAppInitializer.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\models\converter\StringToLocalDateTimeConverter.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\controller\PDFController.java
 C:\Users\Igor_Lapin\Desktop\spring-advanced\src\main\java\beans\daos\DaoException.java
